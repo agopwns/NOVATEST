@@ -68,8 +68,6 @@ public class AdapterScheduleAddLocal extends RecyclerView.Adapter<AdapterSchedul
 
     }
 
-
-
     @Override
     public int getItemCount() {
         return localList.size();
