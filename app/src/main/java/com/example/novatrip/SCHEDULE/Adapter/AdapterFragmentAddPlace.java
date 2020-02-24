@@ -11,10 +11,6 @@ import com.example.novatrip.SCHEDULE.UI.ScheduleFragmentAddPlace_all;
 import com.example.novatrip.SCHEDULE.UI.ScheduleFragmentAddPlace_restaurant;
 import com.example.novatrip.SCHEDULE.UI.ScheduleFragmentAddPlace_shopping;
 import com.example.novatrip.SCHEDULE.UI.ScheduleFragmentAddPlace_sights;
-import com.example.novatrip.SCHEDULE.UI.ScheduleFragmentPlace_intro;
-import com.example.novatrip.SCHEDULE.UI.ScheduleFragmentPlace_recommendation;
-import com.example.novatrip.SCHEDULE.UI.ScheduleFragmentPlace_restaurant;
-import com.example.novatrip.SCHEDULE.UI.ScheduleFragmentPlace_touristAttraction;
 
 public class AdapterFragmentAddPlace extends FragmentPagerAdapter {
 

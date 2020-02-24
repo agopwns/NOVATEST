@@ -20,6 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".SCHEDULE.UI.ScheduleAddPlace"></activity>
+
         <activity android:name=".SCHEDULE.UI.SchedulePlaceDetailActivity"></activity>
         <activity
             android:name=".SCHEDULE.UI.ScheduleMyPageActivity"
@@ -70,7 +71,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".SCHEDULE.UI.ScheduleJoinActivity" />
-        <activity android:name=".SCHEDULE.UI.ScheduleLoginEmailActivity" />
     </application>
 
 </manifest>
