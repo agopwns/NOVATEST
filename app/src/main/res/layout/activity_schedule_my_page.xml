@@ -52,7 +52,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:text="김현정"
+            android:text="이름"
             android:textSize="30dp"
             android:textColor="@color/BLACK"
             android:gravity="center_horizontal"
