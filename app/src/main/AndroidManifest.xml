@@ -70,7 +70,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".SCHEDULE.UI.ScheduleJoinActivity" />
-        <activity android:name=".SCHEDULE.UI.ScheduleLoginEmailActivity" />
     </application>
 
 </manifest>
