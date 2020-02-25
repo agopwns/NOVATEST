@@ -17,7 +17,7 @@
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:src="@drawable/left_arrow"
+            android:src="@drawable/ic_arrow_back_black_24dp"
             android:layout_gravity="center_vertical"
             android:layout_margin="10dp"
             />
@@ -73,7 +73,8 @@
         android:layout_height="wrap_content"
         android:background="@color/WHITE"
         app:tabSelectedTextColor="@android:color/black"
-        app:tabTextColor="@android:color/darker_gray">
+        app:tabTextColor="@android:color/darker_gray"
+        app:tabIndicatorColor="@color/colorMainGreen">
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tab_all"
