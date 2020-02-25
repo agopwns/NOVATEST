@@ -24,6 +24,9 @@ import java.util.Date;
 import java.util.Locale;
 
 import static android.content.ContentValues.TAG;
+import static com.example.novatrip.SCHEDULE.Unit.ItemTravelDetail.AirlineIDX;
+import static com.example.novatrip.SCHEDULE.Unit.ItemTravelDetail.OlympicGameIDX;
+import static com.example.novatrip.SCHEDULE.Unit.ItemTravelDetail.PlaceIDX;
 
 /**
  * 큰 일정 목록
@@ -272,26 +275,37 @@ public class AdapterSchedulTravelPlanAndDetail extends RecyclerView.Adapter<Adap
 
             switch (holder.viewType){
                 case FIRST :
-                    if(itemTravelDetail.getOlympicGame() != null){ 
+                //    public static int OlympicGameIDX = 1; // 올림픽 경기
+                //    public static int PlaceIDX = 2; // 숙소
+                //    public static int AirlineIDX = 3; // 공항
+                //    if(itemTravelDetail.getOlympicGame() != null){
+                    if(itemTravelDetail.getCategory_travel_plan_detail() == OlympicGameIDX){
 
-                           holder.tv_travelDetailPlanName.setText(itemTravelDetail.getOlympicGame().getName_olympic_stadium());
-                           Log.d(TAG, "onBindViewHolder: 올림픽 게임 title set " + itemTravelDetail.getOlympicGame().getName_olympic_stadium());
+                        holder.tv_travelDetailPlanName.setText(itemTravelDetail.getOlympicGame().getName_olympic_stadium());
+                           Log.d(TAG, "o" +
+                                   "nBindViewHolder: 올림픽 게임 title set " + itemTravelDetail.getOlympicGame().getName_olympic_stadium());
                            holder.tv_travelRouteNumber.setText(String.valueOf(position));
                            String start_end_time_FIRST = itemTravelDetail.getOlympicGame().getStart_time_olympic() + " ~ " +  itemTravelDetail.getOlympicGame().getEnd_time_olympic();
                            holder.tv_timeTravelDetailPlan.setText(start_end_time_FIRST);
                            holder.tv_TravelDetailPlanInfo.setText(itemTravelDetail.getOlympicGame().getName_olympic_game());
-
-                    }else{
+ 
+                    }else if(itemTravelDetail.getCategory_travel_plan_detail() == PlaceIDX){
                         holder.tv_travelDetailPlanName.setText(itemTravelDetail.getPlace().getName_place_detail());
                         Log.d(TAG, "onBindViewHolder: 그냥 일정 title set " + itemTravelDetail.getPlace().getName_place_detail());
                         holder.tv_travelRouteNumber.setText(String.valueOf(position));
                         String start_end_time_FIRST = itemTravelDetail.getPlace().getStart_time_place() + " ~ " +  itemTravelDetail.getPlace().getEnd_time_place();
                         holder.tv_timeTravelDetailPlan.setText(start_end_time_FIRST);
                         holder.tv_TravelDetailPlanInfo.setText(itemTravelDetail.getPlace().getAddress_place_detail());
+                    }else if(itemTravelDetail.getCategory_travel_plan_detail() == AirlineIDX){
+//TODO: 공항 등록
+                        Log.d(TAG, "onBindViewHolder: 공항 아이템");
+
                     }
+
+
                     break;
                 case MIDDLE :
-                    if(itemTravelDetail.getOlympicGame() != null){
+                    if(itemTravelDetail.getCategory_travel_plan_detail() == OlympicGameIDX){
                             holder.tv_km.setText("미정");
                             holder.tv_travelDetailPlanName.setText(itemTravelDetail.getOlympicGame().getName_olympic_stadium());
                             Log.d(TAG, "onBindViewHolder: 올림픽 게임 title set " + itemTravelDetail.getOlympicGame().getName_olympic_game());
@@ -299,7 +313,7 @@ public class AdapterSchedulTravelPlanAndDetail extends RecyclerView.Adapter<Adap
                             String start_end_time_MIDDLE = itemTravelDetail.getOlympicGame().getStart_time_olympic() + " ~ " +  itemTravelDetail.getOlympicGame().getEnd_time_olympic();
                             holder.tv_timeTravelDetailPlan.setText(start_end_time_MIDDLE);
                             holder.tv_TravelDetailPlanInfo.setText(itemTravelDetail.getOlympicGame().getName_olympic_game());
-                    }else{
+                    }else if(itemTravelDetail.getCategory_travel_plan_detail() == PlaceIDX){
                         holder.tv_km.setText("미정");
                         holder.tv_travelDetailPlanName.setText(itemTravelDetail.getPlace().getName_place_detail());
                         Log.d(TAG, "onBindViewHolder: 그냥 일정 title set " + itemTravelDetail.getPlace().getName_place_detail());
@@ -307,10 +321,14 @@ public class AdapterSchedulTravelPlanAndDetail extends RecyclerView.Adapter<Adap
                         String start_end_time_FIRST = itemTravelDetail.getPlace().getStart_time_place() + " ~ " +  itemTravelDetail.getPlace().getEnd_time_place();
                         holder.tv_timeTravelDetailPlan.setText(start_end_time_FIRST);
                         holder.tv_TravelDetailPlanInfo.setText(itemTravelDetail.getPlace().getAddress_place_detail());
+                    }else if(itemTravelDetail.getCategory_travel_plan_detail() == AirlineIDX){
+//TODO: 공항 등록
+                        Log.d(TAG, "onBindViewHolder: 공항 아이템");
+
                     }
                     break;
                 case FINISH :
-                    if(itemTravelDetail.getOlympicGame() != null){
+                    if(itemTravelDetail.getCategory_travel_plan_detail() == OlympicGameIDX){
                             holder.tv_km.setText("미정");
                             holder.tv_travelDetailPlanName.setText(itemTravelDetail.getOlympicGame().getName_olympic_stadium());
                             Log.d(TAG, "onBindViewHolder: 올림픽 게임 title set " + itemTravelDetail.getOlympicGame().getName_olympic_game());
@@ -318,7 +336,7 @@ public class AdapterSchedulTravelPlanAndDetail extends RecyclerView.Adapter<Adap
                             String start_end_time_MIDDLE_FINISH = itemTravelDetail.getOlympicGame().getStart_time_olympic() + " ~ " +  itemTravelDetail.getOlympicGame().getEnd_time_olympic();
                             holder.tv_timeTravelDetailPlan.setText(start_end_time_MIDDLE_FINISH);
                             holder.tv_TravelDetailPlanInfo.setText(itemTravelDetail.getOlympicGame().getName_olympic_game());
-                    }else{
+                    }else if(itemTravelDetail.getCategory_travel_plan_detail() == PlaceIDX){
                         holder.tv_km.setText("미정");
                         holder.tv_travelDetailPlanName.setText(itemTravelDetail.getPlace().getName_place_detail());
                         Log.d(TAG, "onBindViewHolder: 그냥 일정 title set " + itemTravelDetail.getPlace().getName_place_detail());
@@ -326,7 +344,11 @@ public class AdapterSchedulTravelPlanAndDetail extends RecyclerView.Adapter<Adap
                         String start_end_time_FIRST = itemTravelDetail.getPlace().getStart_time_place() + " ~ " +  itemTravelDetail.getPlace().getEnd_time_place();
                         holder.tv_timeTravelDetailPlan.setText(start_end_time_FIRST);
                         holder.tv_TravelDetailPlanInfo.setText(itemTravelDetail.getPlace().getAddress_place_detail());
-                    }
+                    }else if(itemTravelDetail.getCategory_travel_plan_detail() == AirlineIDX){
+//TODO: 공항 등록
+                    Log.d(TAG, "onBindViewHolder: 공항 아이템");
+
+                }
                     break;
                 default:
                     break;

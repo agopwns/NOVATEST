@@ -277,7 +277,9 @@ public class ScheduleTravelDetailActivity extends AppCompatActivity implements V
                 Log.d(TAG, "onClick: ");
 
                 for(int i=0; i<itemTravelPlans.size(); i++){
+
                      ArrayList<ItemTravelDetail> itemTravelDetails =  itemTravelPlans.get(i).getAdapter_child().getItemTravelDetailArrayList();
+
                      for(int j=0; j<itemTravelDetails.size(); j++){
                       ItemTravelDetail itemTravelDetail = itemTravelDetails.get(i);
                       if(itemTravelDetail.getOlympicGame() == null){
@@ -288,8 +290,7 @@ public class ScheduleTravelDetailActivity extends AppCompatActivity implements V
                            ,@Field("category_travel_plan_detail") int category_travel_plan_detail
                            ,@Field("start_time_place_detail") String start_time_place_detail , @Field("end_time_place_detail") String end_time_place_detail
                            );
-                           *
-                           * ***/
+                           ***/
                           Log.d(TAG, "onClick: 일반일정 아이템");
                           Place place = itemTravelDetail.getPlace();
                           Log.d(TAG, "onClick: place "+place);

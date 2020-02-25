@@ -11,9 +11,10 @@ public class ItemTravelDetail  implements Parcelable {
     private int route_order_travel;
 
     //카테고리
-    private String  category_travel_plan_detail;
-    public static String OlympicGameIDX = "OLYMPIC";
-    public static String PlaceIDX = "PLACE";
+    private int  category_travel_plan_detail;
+    public static int OlympicGameIDX = 1; // 올림픽 경기
+    public static int PlaceIDX = 2; // 숙소
+    public static int AirlineIDX = 3; // 공항
 
     //TODO:여행 일정중 올림픽 제외한 장소 추가해야함.
     private OlympicGame olympicGame;
@@ -23,7 +24,7 @@ public class ItemTravelDetail  implements Parcelable {
         idx_travel_plan = in.readInt();
         unixtime_travel_plan_detail = in.readString();
         route_order_travel = in.readInt();
-        category_travel_plan_detail = in.readString();
+        category_travel_plan_detail = in.readInt();
         olympicGame = in.readParcelable(OlympicGame.class.getClassLoader());
         place = in.readParcelable(Place.class.getClassLoader());
     }
@@ -68,13 +69,11 @@ public class ItemTravelDetail  implements Parcelable {
         this.unixtime_travel_plan_detail = unixtime_travel_plan_detail;
     }
 
-
-
-    public String getCategory_travel_plan_detail() {
+    public int getCategory_travel_plan_detail() {
         return category_travel_plan_detail;
     }
 
-    public void setCategory_travel_plan_detail(String category_travel_plan_detail) {
+    public void setCategory_travel_plan_detail(int category_travel_plan_detail) {
         this.category_travel_plan_detail = category_travel_plan_detail;
     }
 
@@ -105,7 +104,7 @@ public class ItemTravelDetail  implements Parcelable {
         dest.writeInt(idx_travel_plan);
         dest.writeString(unixtime_travel_plan_detail);
         dest.writeInt(route_order_travel);
-        dest.writeString(category_travel_plan_detail);
+        dest.writeInt(category_travel_plan_detail);
         dest.writeParcelable(olympicGame, flags);
         dest.writeParcelable(place, flags);
     }

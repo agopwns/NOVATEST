@@ -30,7 +30,6 @@ public class AdapterFragmentAddPlace extends FragmentPagerAdapter {
         this.position = position ;
         this.idx_travel_plan = idx_travel_plan ;
         this.adapterScheduleChoicePlace = adapterScheduleChoicePlace;
-
     }
 
     @Override
@@ -53,8 +52,6 @@ public class AdapterFragmentAddPlace extends FragmentPagerAdapter {
             default:
                 return null;
         }
-
-
     }
 
     @Override
@@ -62,5 +59,3 @@ public class AdapterFragmentAddPlace extends FragmentPagerAdapter {
         return 4;
     }
 }
-
-
