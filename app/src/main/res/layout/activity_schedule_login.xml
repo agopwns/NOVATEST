@@ -6,32 +6,33 @@
     android:layout_height="match_parent"
 
     android:orientation="vertical"
-    android:background="@drawable/login_backgraund">
+    android:background="@drawable/novatrip">
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="NOVA TRIP"
-        android:textSize="60dp"
+        android:textSize="55dp"
         android:textStyle="bold"
         android:textColor="@color/WHITE"
         android:gravity="center"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="130dp"
         />
 
-    <TextView
-        android:id="@+id/tv_showTutorial"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round_white"
-        android:text="@string/schedule_login_guidebook"
-        android:textSize="20dp"
-        android:padding="10dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/WHITE"
-        />
+<!--    <TextView-->
+<!--        android:id="@+id/tv_showTutorial"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@drawable/round_white"-->
+<!--        android:text="@string/schedule_login_guidebook"-->
+<!--        android:textSize="20dp"-->
+<!--        android:padding="10dp"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:textColor="@color/WHITE"-->
+<!--        -->
+<!--        />-->
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_marginHorizontal="60dp"
@@ -63,7 +64,7 @@
     <Button
         android:layout_marginTop="20dp"
         android:id="@+id/btn_login"
-        android:background="@color/BLACK"
+        android:background="@color/WHITE"
         android:layout_width="match_parent"
         android:layout_marginHorizontal="60dp"
         android:layout_height="wrap_content"
@@ -71,7 +72,7 @@
         android:textStyle="bold"
         android:layout_gravity="center"
         android:gravity="center"
-        android:textColor="@color/WHITE"
+        android:textColor="@color/BLACK"
         android:textSize="18dp"
         android:paddingVertical="10dp"
         />
@@ -106,6 +107,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/schedule_login_ask"
+            android:textColor="@color/WHITE"
+            />
+        <TextView
+            android:textStyle="bold"
+            android:layout_marginHorizontal="10dp"
+            android:layout_width="1dp"
+            android:layout_height="13dp"
+            android:layout_gravity="center"
+            android:background="@color/WHITE"
+            />
+        <TextView
+            android:id="@+id/tv_showTutorial"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/schedule_login_guidebook"
             android:textColor="@color/WHITE"
             />
 

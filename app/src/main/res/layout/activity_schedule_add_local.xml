@@ -18,6 +18,8 @@
             android:id="@+id/input_keyword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:hint="@string/schedule_login_plan_choiceTravelLocal" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -41,11 +43,11 @@
 
     <Button
         android:id="@+id/btn_add_travelPriod"
-        android:background="@color/colorTextGreen"
-        android:textSize="@dimen/design_bottom_text_size"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorMainGreen"
         android:text="@string/schedule_plan_add"
-        />
+        android:textSize="@dimen/design_bottom_text_size"
+        android:textColor="@color/colorWhiteGrey"/>
 
 </LinearLayout>

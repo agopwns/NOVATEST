@@ -1,6 +1,7 @@
 package com.example.novatrip.SCHEDULE.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -63,6 +64,7 @@ public class ScheduleLoginActivity extends AppCompatActivity  implements View.On
 //        editor3.clear();
 //        editor3.apply();
 //
+        this.getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.BLACK));
 
         //초기화
         textinput_id = findViewById(R.id.textinput_id);

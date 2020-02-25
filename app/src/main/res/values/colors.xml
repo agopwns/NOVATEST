@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#85E189</color>
-    <color name="colorPrimaryDark">#85E2</color>
+    <color name="colorPrimaryDark">#85E189</color>
     <color name="colorAccent">#2196F3</color>
     <color name="color_text">#495459</color>
     <color name="BLACK">#000000</color>
@@ -20,12 +20,13 @@
     <color name="colorBlackOpacity90">#E6000000</color>
     <color name="colorBlack">#000000</color>
 
+    <!-- 메인 텍스트 컬러 -->
     <color name="colorTextGreen">#2ECC71</color>
 
-    <!-- 메인 텍스트 컬러 -->
+    <!-- 메인 컬러 -->
     <color name="colorMainGreen">#85E189</color>
 
-    <!-- 메인 컬러 -->
+
     <color name="colorTextGrey">#B4B4B4</color>
 
     <!--투명-->
