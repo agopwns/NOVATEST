@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/WHITE"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_margin="10dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/left_arrow"
+        />
+
+<ScrollView
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:background="@color/WHITE"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+        <TextView
+            android:textStyle="bold"
+            android:text="항공편 등록"
+            android:textColor="@color/BLACK"
+            android:textSize="20sp"
+            android:paddingTop="8dp"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+
+            <TextView
+                android:text="항공편명"
+                android:textSize="16sp"
+                android:paddingTop="8dp"
+                android:paddingRight="16dp"
+                android:paddingLeft="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:background="@null"
+                android:id="@+id/result_flight_number"
+                android:text="티웨이항공(TW)101"
+                android:textSize="18sp"
+                android:paddingTop="8dp"
+                android:paddingRight="16dp"
+                android:paddingLeft="16dp"
+                android:paddingBottom="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <TextView
+                android:text="출발 공항"
+                android:textSize="16sp"
+                android:paddingTop="8dp"
+                android:paddingRight="16dp"
+                android:paddingLeft="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:background="@null"
+                android:id="@+id/result_departure_airport"
+                android:text="인천국제공항(ICN)"
+                android:textSize="18sp"
+                android:paddingTop="8dp"
+                android:paddingRight="16dp"
+                android:paddingLeft="16dp"
+                android:paddingBottom="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:text="출발일"
+                    android:textSize="16sp"
+                    android:paddingTop="8dp"
+                    android:paddingRight="16dp"
+                    android:paddingLeft="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <FrameLayout
+                    android:id="@+id/mtBackground"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@color/colorWhiteOpacity0"
+                    android:foreground="?attr/selectableItemBackground">
+
+                    <LinearLayout
+                        android:layout_marginRight="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="right"
+                        android:background="@drawable/round_gray"
+                        android:padding="6dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|bottom"
+                            android:text="선택"
+                            />
+                    </LinearLayout>
+
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_choice_startDate"
+                android:text="2020. 07. 29"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:paddingTop="8dp"
+                android:paddingRight="16dp"
+                android:paddingLeft="16dp"
+                android:paddingBottom="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:text="출발 시간"
+                    android:textSize="16sp"
+                    android:paddingTop="8dp"
+                    android:paddingRight="16dp"
+                    android:paddingLeft="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@color/colorWhiteOpacity0"
+                    android:foreground="?attr/selectableItemBackground">
+
+                    <LinearLayout
+                        android:layout_marginRight="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="right"
+                        android:background="@drawable/round_gray"
+                        android:padding="6dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|bottom"
+                            android:text="선택"
+                            />
+                    </LinearLayout>
+
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:background="@null"
+                android:id="@+id/result_departure_time"
+                android:text="08:30"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:paddingTop="8dp"
+                android:paddingRight="16dp"
+                android:paddingLeft="16dp"
+                android:paddingBottom="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <TextView
+                android:text="도착 공항"
+                android:textSize="16sp"
+                android:paddingTop="8dp"
+                android:paddingRight="16dp"
+                android:paddingLeft="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:background="@null"
+                android:id="@+id/result_arrival_airport"
+                android:text="도쿄(나리타)(NRT) "
+                android:textSize="18sp"
+                android:paddingTop="8dp"
+                android:paddingRight="16dp"
+                android:paddingLeft="16dp"
+                android:paddingBottom="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:text="도착일"
+                    android:textSize="16sp"
+                    android:paddingTop="8dp"
+                    android:paddingRight="16dp"
+                    android:paddingLeft="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <FrameLayout
+
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@color/colorWhiteOpacity0"
+                    android:foreground="?attr/selectableItemBackground">
+
+                    <LinearLayout
+                        android:layout_marginRight="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="right"
+                        android:background="@drawable/round_gray"
+                        android:padding="6dp">
+
+                        <TextView
+                            android:id="@+id/tv_choice_endDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|bottom"
+                            android:text="선택"
+                            />
+                    </LinearLayout>
+
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/result_departure_date"
+                android:text="2020. 07. 29"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:paddingTop="8dp"
+                android:paddingRight="16dp"
+                android:paddingLeft="16dp"
+                android:paddingBottom="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:text="도착 시간"
+                    android:textSize="16sp"
+                    android:paddingTop="8dp"
+                    android:paddingRight="16dp"
+                    android:paddingLeft="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <FrameLayout
+
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@color/colorWhiteOpacity0"
+                    android:foreground="?attr/selectableItemBackground">
+
+                    <LinearLayout
+                        android:layout_marginRight="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="right"
+                        android:background="@drawable/round_gray"
+                        android:padding="6dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|bottom"
+                            android:text="선택"
+                            />
+                    </LinearLayout>
+
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/result_arrival_time"
+                android:text="11:00"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:paddingTop="8dp"
+                android:paddingRight="16dp"
+                android:paddingLeft="16dp"
+                android:paddingBottom="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <TextView
+                android:text="메모"
+                android:textSize="16sp"
+                android:paddingTop="8dp"
+                android:paddingRight="16dp"
+                android:paddingLeft="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/note"
+                android:textColor="#A0A0A0"
+                android:textSize="16sp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginLeft="16dp"
+                android:paddingTop="8dp"
+                android:paddingRight="16dp"
+                android:paddingLeft="16dp"
+                android:paddingBottom="8dp"
+                android:background="@drawable/btn2"
+                android:text="텍스트 입력"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_add_airline"
+            android:textColor="@color/WHITE"
+            android:textSize="18sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="24dp"
+            android:layout_marginLeft="16dp"
+            android:background="@color/colorMainGreen"
+            android:text="등록"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+    </LinearLayout>
+
+</ScrollView>
+</LinearLayout>

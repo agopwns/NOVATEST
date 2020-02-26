@@ -5,16 +5,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="@color/WHITE"
     android:orientation="vertical"
-
     >
 <FrameLayout
+    android:background="@color/WHITE"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     >
     <ImageView
+        android:background="@color/WHITE"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="10dp"
@@ -24,6 +25,7 @@
         android:src="@drawable/ic_arrow_back_black_24dp"
         />
     <ImageView
+        android:background="@color/WHITE"
         android:layout_gravity="right|center_vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -38,7 +40,7 @@
         android:layout_marginHorizontal="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:background="@color/WHITE"
         android:layout_marginBottom="10dp"
         >
         <TextView
@@ -108,6 +110,7 @@
             android:text="+ 항공"
             />
         <Button
+            android:layout_marginRight="10dp"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -116,6 +119,28 @@
             android:textColor="@color/WHITE"
             android:text="+ 숙소"
             />
+        <Button
+            android:layout_marginRight="10dp"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:id="@+id/btn_add_olympic"
+            android:background="@drawable/button_background"
+            android:textColor="@color/WHITE"
+            android:text="+ 올림픽 경기"
+            />
+
+<!--        <Button-->
+<!--            android:layout_marginRight="10dp"-->
+<!--            android:layout_width="110dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center"-->
+<!--            android:id="@+id/btn_add_olympic"-->
+<!--            android:background="@drawable/button_background"-->
+<!--            android:textColor="@color/WHITE"-->
+<!--            android:text="+ 올림픽 경기"-->
+<!--            />-->
+
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

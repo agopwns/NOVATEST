@@ -5,9 +5,9 @@ import android.os.Parcelable;
 
 public class Local implements Parcelable {
 
-
-
     private int idx;
+    private String name_local;// 항공 등록에서는 unix Time으로 사용, 그 외에는 지역 이름으로 사용.
+
 
     protected Local(Parcel in) {
         idx = in.readInt();
@@ -45,7 +45,7 @@ public class Local implements Parcelable {
         this.name_local = name_local;
     }
 
-    private String name_local;
+
 
     @Override
     public int describeContents() {
