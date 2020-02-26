@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--올림픽 경기에 대한 정보를 보여주는 다이얼로그 -->
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:background="@drawable/round_gray"
+    >
+
+<LinearLayout
+    card_view:cardCornerRadius="20dp"
+    card_view:cardUseCompatPadding="true"
+    android:id="@+id/bottom_sheet"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    app:behavior_hideable="false"
+
+    >
+
+
+
+        <LinearLayout
+            android:background="@color/colorMainGreen"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="15dp"
+           >
+
+            <TextView
+
+                android:id="@+id/tv_name_airline_nuber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="티웨이항공(TW)101"
+                android:textColor="@color/WHITE"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                />
+
+
+        </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+
+        <LinearLayout
+            android:paddingTop="20dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="20dp"
+                >
+                <TextView
+                    android:id="@+id/tv_time_start_airport"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorMainGreen"
+                    android:text="08:30"
+                    android:textSize="17dp"
+                    android:textStyle="bold"
+                    />
+                <TextView
+                    android:id="@+id/tv_date_start_airport"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorMainGreen"
+                    android:text="7.29/수"
+                    android:textSize="13dp"
+
+                    />
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:paddingTop="10dp"
+                android:layout_width="30dp"
+                android:layout_height="180dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/layout_travelPlanDetailItem"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <!--    선     -->
+                <TextView
+                    android:layout_width="3dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="#eeeeee" />
+
+
+
+                <TextView
+                    android:id="@+id/tv_travelRouteNumber"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/circle_background"
+                    android:gravity="center"
+                    android:textColor="@color/WHITE"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/layout_travelPlanDetailItem" />
+
+            </FrameLayout>
+
+
+            <LinearLayout
+                android:id="@+id/layout_travelPlanDetailItem"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:id="@+id/tv_name_start_country"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="10dp"
+                    android:text="서울"
+                    android:textSize="14dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_name_start_airport"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="10dp"
+                    android:text="인천국제공항(ICN)"
+                    android:textSize="17dp"
+                    android:textColor="@color/BLACK"
+                    app:layout_constraintStart_toStartOf="@+id/tv_travelDetailPlanName"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_travelDetailPlanName" />
+
+                <TextView
+                    android:id="@+id/tv_name_start_airport_english"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="10dp"
+                    android:text="incheon international Airport"
+                    android:textSize="17dp"
+                    android:textColor="#cccccc"
+                    app:layout_constraintStart_toStartOf="@+id/tv_travelDetailPlanName"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_travelDetailPlanName"
+
+                    />
+
+
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_gray"
+                    android:text="2시간 30분 소요"
+                    android:padding="10dp"
+                    android:layout_marginTop="30dp"
+                    />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+        </LinearLayout>
+
+
+
+
+
+    <LinearLayout
+
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp"
+            >
+
+            <TextView
+                android:id="@+id/tv_time_end_airport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="11:00"
+                android:textColor="@color/colorMainGreen"
+                android:textSize="17dp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tv_date_end_airport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorMainGreen"
+                android:text="7.29/수"
+                android:textSize="13dp"
+
+                />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="30dp"
+            android:layout_height="100dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/layout_travelPlanDetailItem"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_gravity="center_horizontal|top"
+                android:background="@drawable/circle_background"
+                android:gravity="start"
+                android:textColor="@color/WHITE"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/layout_travelPlanDetailItem" />
+
+        </FrameLayout>
+
+
+        <LinearLayout
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/tv_name_end_country"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp"
+                android:text="도쿄"
+                android:textSize="14dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_name_end_airport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp"
+                android:text="도쿄(나리타)(NRT)"
+                android:textSize="17dp"
+                android:textColor="@color/BLACK"
+                app:layout_constraintStart_toStartOf="@+id/tv_travelDetailPlanName"
+                app:layout_constraintTop_toBottomOf="@+id/tv_travelDetailPlanName" />
+
+            <TextView
+                android:id="@+id/tv_name_end_airport_english"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp"
+                android:text="Narita International Airport"
+                android:textSize="17dp"
+                android:textColor="#cccccc"
+                app:layout_constraintStart_toStartOf="@+id/tv_travelDetailPlanName"
+                app:layout_constraintTop_toBottomOf="@+id/tv_travelDetailPlanName" />
+
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+</LinearLayout>
+
+</androidx.cardview.widget.CardView>

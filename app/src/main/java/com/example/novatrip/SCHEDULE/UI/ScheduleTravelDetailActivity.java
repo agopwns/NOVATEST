@@ -127,6 +127,7 @@ public class ScheduleTravelDetailActivity extends AppCompatActivity implements V
         adapterSchedulTravelPlanAndDetail.ClickListener_clickLisenerSchedulAddTravelDetailItem(new ClickLisenerSchedulAddTravelLocation() {
             @Override
             public void OnItemClick(String unixTime, int position) {
+
                 localArrayList_choice = new ArrayList<>();
 
 //                // 만약 unixTime이 올림픽 시작일(7/22일)보다 크고 종료일(8/?)일 보다 작으면 올림픽 기간으로 생각해서 일정 추갈할 때 올림픽 관련 일정 추가.
@@ -171,6 +172,7 @@ public class ScheduleTravelDetailActivity extends AppCompatActivity implements V
 
 
     public void setTravelDetailItemClickLisner(){
+
         if(adapterSchedulTravelPlanAndDetail.getTravelPlanList().size() == 0 || adapterSchedulTravelPlanAndDetail.getTravelPlanList() ==null){
             Log.d(TAG, "setTravelDetailItemClickLisner: 리스트 비어있음 ");
             return;
@@ -185,7 +187,7 @@ public class ScheduleTravelDetailActivity extends AppCompatActivity implements V
             adapterSchedulTravelPlanAndDetail.getTravelPlanList().get(i).getAdapter_child().ClickListener_clickLisenerSchedulTravelDetailItem(new ClickLisenerSchedulTravelDetailitem() {
                 @Override
                 public void OnItemClick(final ItemTravelDetail itemTravelDetail,final int position_) {
-                    if(itemTravelDetail.getOlympicGame() == null){
+                    if(itemTravelDetail.getCategory_travel_plan_detail() == PlaceIDX){
 
                         Log.d(TAG, "OnItemClick: 일반 여행 ");
 
@@ -227,13 +229,11 @@ public class ScheduleTravelDetailActivity extends AppCompatActivity implements V
                         dialog.setContentView(dialogView);
                         dialog.show();
 
-                    }else if(itemTravelDetail.getOlympicGame() !=null){
+                    }else if(itemTravelDetail.getCategory_travel_plan_detail()==OlympicGameIDX){
+
                         Log.d(TAG, "OnItemClick: 올림픽 여행 ");
-
                         View dialogView = getLayoutInflater().inflate(R.layout.dialog_bottom_olympic_info, null);
-
                         ImageView iv_profile = dialogView.findViewById(R.id.iv_profile);
-
                         //TODO:올림픽 경기에 관한 이미지 컬럼 만들고 정보 넣어서 보여줘야함.
                         Glide.with(getApplicationContext())
                                 .load("https://upload.wikimedia.org/wikipedia/ko/thumb/b/b6/2020%EB%85%84_%ED%95%98%EA%B3%84_%EC%98%AC%EB%A6%BC%ED%94%BD_%EB%A1%9C%EA%B3%A0.svg/1200px-2020%EB%85%84_%ED%95%98%EA%B3%84_%EC%98%AC%EB%A6%BC%ED%94%BD_%EB%A1%9C%EA%B3%A0.svg.png")
@@ -264,6 +264,15 @@ public class ScheduleTravelDetailActivity extends AppCompatActivity implements V
                                 startActivity(intent);
                             }
                         });
+                        dialog = new BottomSheetDialog(context);
+                        dialog.setContentView(dialogView);
+                        dialog.show();
+                    }else if(itemTravelDetail.getCategory_travel_plan_detail() == AirlineIDX ){
+
+                        Log.d(TAG, "OnItemClick:  항공편 idx ");
+
+                        View dialogView = getLayoutInflater().inflate(R.layout.dialog_bottom_airline, null);
+
                         dialog = new BottomSheetDialog(context);
                         dialog.setContentView(dialogView);
                         dialog.show();
@@ -577,7 +586,7 @@ public class ScheduleTravelDetailActivity extends AppCompatActivity implements V
             //TravelPlanDetail 을 보여주는 리사이클러뷰의 list를 가져온 후
             ArrayList<ItemTravelDetail> itemTravelDetails =  itemTravelPlan.getAdapter_child().getItemTravelDetailArrayList();
 
-            //새로 추가한 airline 정보를 추가한다.
+
             Log.d(TAG, "onActivityResult: 첫 데이터 추가");
             ItemTravelDetail addItemTravelDetail = new ItemTravelDetail();
 
@@ -605,6 +614,9 @@ public class ScheduleTravelDetailActivity extends AppCompatActivity implements V
              addItemTravelDetail.setUnixtime_travel_plan_detail(unixTime);
              addItemTravelDetail.setCategory_travel_plan_detail(AirlineIDX);
              addItemTravelDetail.setAirline(airline);
+
+             //새로  airline 정보를 추가한다.
+            itemTravelDetails.add(addItemTravelDetail);
 
             itemTravelPlan.getAdapter_child().setItemTravelDetailArrayList(itemTravelDetails);
             itemTravelPlan.getAdapter_child().notifyDataSetChanged();

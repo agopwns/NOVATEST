@@ -297,11 +297,13 @@ public class AdapterSchedulTravelPlanAndDetail extends RecyclerView.Adapter<Adap
                         holder.tv_timeTravelDetailPlan.setText(start_end_time_FIRST);
                         holder.tv_TravelDetailPlanInfo.setText(itemTravelDetail.getPlace().getAddress_place_detail());
                     }else if(itemTravelDetail.getCategory_travel_plan_detail() == AirlineIDX){
-//TODO: 공항 등록
-                        Log.d(TAG, "onBindViewHolder: 공항 아이템");
 
+                        holder.tv_travelDetailPlanName.setText("공항");
+                        holder.tv_travelRouteNumber.setText(String.valueOf(position));
+                        String start_end_time_FIRST = itemTravelDetail.getAirline().getStart_time_airline() + " ~ " +   itemTravelDetail.getAirline().getEnd_time_airport();
+                        holder.tv_timeTravelDetailPlan.setText(start_end_time_FIRST);
+                        holder.tv_TravelDetailPlanInfo.setText(itemTravelDetail.getAirline().getName_start_airport()+" ~ " +itemTravelDetail.getAirline().getName_end_airport());
                     }
-
 
                     break;
                 case MIDDLE :
