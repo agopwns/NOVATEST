@@ -19,9 +19,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SCHEDULE.UI.ScheduleAddPlace"></activity>
-
-        <activity android:name=".SCHEDULE.UI.SchedulePlaceDetailActivity"></activity>
+        <activity android:name=".ScheduleOlympicInfoActivity"></activity>
+        <activity android:name=".SCHEDULE.UI.ScheduleAddPlace" />
+        <activity android:name=".SCHEDULE.UI.SchedulePlaceDetailActivity" />
         <activity
             android:name=".SCHEDULE.UI.ScheduleMyPageActivity"
             android:label="@string/title_activity_schedule_my_page"
@@ -42,9 +42,7 @@
         <activity
             android:name=".SCHEDULE.UI.ScheduleOlympicDailyScedule"
             android:label="@string/title_activity_schedule_olympic_daily_scedule" />
-        <activity android:name=".SCHEDULE.UI.ScheduleTravelDetailActivity">
-
-        </activity>
+        <activity android:name=".SCHEDULE.UI.ScheduleTravelDetailActivity"></activity>
         <activity android:name=".SCHEDULE.UI.ScheduleAddLocal" />
         <activity android:name=".SCHEDULE.UI.ScheduleCalender" />
         <activity android:name=".SCHEDULE.UI.ScheduleAddTravel" />

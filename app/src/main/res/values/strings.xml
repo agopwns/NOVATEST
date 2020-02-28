@@ -62,6 +62,16 @@
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
 
+    <!--    올림픽 정보 화면 -->
+    <string name="schedule_olympic_info_title1">스포츠에는</string>
+    <string name="schedule_olympic_info_title2">세계와 미래를 바꾸는 힘이 있다."</string>
+    <string name="schedule_olympic_info_olympic">도쿄 올림픽</string>
+    <string name="schedule_olympic_info_paralympic">패럴림픽</string>
+    <string name="schedule_olympic_info_search">검색</string>
+    <string name="schedule_olympic_info_gameinfo">경기 정보</string>
+    <string name="schedule_olympic_info_event">올림픽 행사</string>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_main2">Main2Activity</string>
