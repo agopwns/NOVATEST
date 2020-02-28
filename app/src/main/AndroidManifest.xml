@@ -19,13 +19,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SCHEDULE.UI.ScheduleAddAirline"></activity>
-        <activity android:name=".SCHEDULE.UI.ScheduleAddPlace" />
+        <activity android:name=".SCHEDULE.UI.TimePicker">
 
-        <activity android:name=".SCHEDULE.UI.SchedulePlaceDetailActivity" >
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-
+        <activity android:name=".SCHEDULE.UI.ScheduleAddAirline" />
+        <activity android:name=".SCHEDULE.UI.ScheduleAddPlace" />
+        <activity android:name=".SCHEDULE.UI.SchedulePlaceDetailActivity"></activity>
         <activity
             android:name=".SCHEDULE.UI.ScheduleMyPageActivity"
             android:label="@string/title_activity_schedule_my_page"
@@ -47,10 +52,11 @@
             android:name=".SCHEDULE.UI.ScheduleOlympicDailyScedule"
             android:label="@string/title_activity_schedule_olympic_daily_scedule" />
         <activity android:name=".SCHEDULE.UI.ScheduleTravelDetailActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity android:name=".SCHEDULE.UI.ScheduleAddLocal" />
         <activity android:name=".SCHEDULE.UI.ScheduleCalender" />
@@ -70,14 +76,11 @@
         <activity
             android:name=".SCHEDULE.UI.ScheduleNavigationChatActivity"
             android:label="@string/title_activity_schedule_navigation_chat" />
-        <activity android:name=".SCHEDULE.UI.ScheduleLoginActivity">
-
-        </activity>
+        <activity android:name=".SCHEDULE.UI.ScheduleLoginActivity"></activity>
         <activity android:name=".SCHEDULE.UI.ScheduleJoinActivity" />
-
-        <activity android:name="com.yongbeom.aircalendar.AirCalendarDatePickerActivity"
+        <activity
+            android:name="com.yongbeom.aircalendar.AirCalendarDatePickerActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-
     </application>
 
 </manifest>

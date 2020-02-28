@@ -67,7 +67,7 @@ public class ScheduleAddPlace  extends AppCompatActivity {
 
         //사용자가 선택한 장소를 보여줄 가로 리사이클러뷰 init
         Log.d(TAG, "onCreate: 사용자가 선택한 장소를 보여줄 가로 리사이클러뷰 init ");
-        recycler_view_choice_place  = findViewById(R.id.recycler_view_choice_place);
+//        recycler_view_choice_place  = findViewById(R.id.recycler_view_choice_place);
         initRecyclerviewChoicePlace();
 
 

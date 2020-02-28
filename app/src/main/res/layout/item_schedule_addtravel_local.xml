@@ -18,7 +18,7 @@
         android:id="@+id/tv_add_local"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="선택"
+        android:text="@string/schedule_plan_choice"
         android:layout_gravity="center"
         android:background="@drawable/round_gray"
         android:textSize="17dp"

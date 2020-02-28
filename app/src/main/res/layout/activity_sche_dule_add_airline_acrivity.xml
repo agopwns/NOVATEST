@@ -54,7 +54,7 @@
 
 
             <TextView
-                android:text="항공편명"
+                android:text="@string/schedule_hotel_airline"
                 android:textSize="16sp"
                 android:paddingTop="8dp"
                 android:paddingRight="16dp"
@@ -134,7 +134,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal|bottom"
-                            android:text="선택"
+                            android:text="@string/schedule_plan_choice"
                             />
                     </LinearLayout>
 
@@ -190,7 +190,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal|bottom"
-                            android:text="선택"
+                            android:text="@string/schedule_plan_choice"
                             />
                     </LinearLayout>
 
@@ -271,7 +271,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal|bottom"
-                            android:text="선택"
+                            android:text="@string/schedule_plan_choice"
                             />
                     </LinearLayout>
 
@@ -330,7 +330,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal|bottom"
-                            android:text="선택"
+                            android:text="@string/schedule_plan_choice"
                             />
                     </LinearLayout>
 

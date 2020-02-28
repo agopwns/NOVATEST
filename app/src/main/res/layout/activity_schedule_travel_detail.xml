@@ -59,35 +59,24 @@
             android:layout_height="wrap_content"
             android:hint="기간"
             android:id="@+id/tv_travelPriod"
-
             />
 
-        <TextView
-            android:id="@+id/tv_editTravelPlan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/round_gray"
-            android:paddingHorizontal="7dp"
-            android:paddingVertical="5dp"
-            android:src="@drawable/ic_person_add_black_24dp"
-            android:text="편집"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+
+<!--TODO 저장하기 / 편집하기 버튼-->
+<!--        <TextView-->
+<!--            android:id="@+id/tv_editTravelPlan"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/round_gray"-->
+<!--            android:paddingHorizontal="7dp"-->
+<!--            android:paddingVertical="5dp"-->
+<!--            android:src="@drawable/ic_person_add_black_24dp"-->
+<!--            android:text="@string/schedule_tv_save_choicePlace"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
 
-        <TextView
-            android:id="@+id/tv_saveTravelPlan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/round_gray"
-            android:paddingHorizontal="7dp"
-            android:paddingVertical="5dp"
-            android:src="@drawable/ic_person_add_black_24dp"
-            android:text="저장"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -107,7 +96,7 @@
             android:background="@drawable/button_background"
             android:textColor="@color/WHITE"
             android:layout_marginRight="10dp"
-            android:text="+ 항공"
+            android:text="@string/schedule_btn_btn_addAirLint"
             />
         <Button
             android:layout_marginRight="10dp"
@@ -117,7 +106,7 @@
             android:id="@+id/btn_addHotel"
             android:background="@drawable/button_background"
             android:textColor="@color/WHITE"
-            android:text="+ 숙소"
+            android:text="@string/schedule_btn_addHotel"
             />
         <Button
             android:layout_marginRight="10dp"
@@ -127,7 +116,7 @@
             android:id="@+id/btn_add_olympic"
             android:background="@drawable/button_background"
             android:textColor="@color/WHITE"
-            android:text="+ 올림픽 경기"
+            android:text="@string/schedule_btn_add_olympic"
             />
 
 <!--        <Button-->

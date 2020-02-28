@@ -3,6 +3,7 @@
 
     <!--  담당역할 클래스 설명   -->
     <!--    멘트-->
+
     <string name="schedule_login_guidebook">사용 설명서</string>
     <string name="schedule_login_join">회원가입</string>
     <string name="schedule_login_ask">문의하기</string>
@@ -20,7 +21,9 @@
     <string name="schedule_plan_title">일정 목록</string>
     <string name="schedule_plan_add">일정 등록</string>
     <string name="schedule_plan_add_priod">등록하기</string>
-
+    <string name="schedule_plan_choice">선택</string>
+    <string name="schedule_plan_intro">설명</string>
+    <string name="schedule_plan_review">후기</string>
 
     <!--    탭 메뉴-->
     <string name="tap_pin">여행지</string>
@@ -28,6 +31,12 @@
     <string name="tap_chat">채팅</string>
     <string name="tap_subject">번역</string>
     <string name="tap_user">내 정보</string>
+
+    <string name="schedule_btn_add_olympic">올림픽 경기</string>
+    <string name="schedule_btn_addHotel">숙소</string>
+    <string name="schedule_btn_btn_addAirLint">항공</string>
+
+
     <string name="title_activity_test2">test2</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
@@ -51,6 +60,12 @@
     <string name="title_activity_schedule_olympic_daily_scedule">Map</string>
 
 
+    <!--  일정 등록 다이얼로그   -->
+    <string name="schedule_dialog_add_time_title">일정 수행 시간을 등록해주세요.</string>
+    <string name="schedule_dialog_add_time_start">시작 시간 등록</string>
+    <string name="schedule_dialog_add_time_end">종료 시간 등록</string>
+
+
     <!--    올림픽 경기일정-->
     <string name="schedule_olympicGametime">경기 시간</string>
     <string name="schedule_olympicGameType">경기 종목</string>
@@ -68,6 +83,30 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_main2">Main2Activity</string>
+
+    <!--  항공 등록 엑티비티 -->
+    <string name="schedule_hotel_airline">항공편명</string>
+    <!-- //TODO: 더 바꿔야 함.    -->
+
+
+    <!--  관광지 상세보여주기 엑티비티에서 탭메뉴  -->
+    <string name="schedule_tab_info">소개</string>
+    <string name="schedule_tab_famousRestaurant">주변 맛집</string>
+    <string name="schedule_tab_touristAttraction">주변 관광지</string>
+    <string name="schedule_tab_recommendation">추천</string>
+
+
+    <!-- 관광지 상세보여주기 바닥 다이얼로그-->
+    <string name="schedule_add_memo">메모 추가</string>
+    <string name="schedule_show_detail">상세 보기</string>
+
+    <!-- 관광지 추가하는 탭메뉴   -->
+    <string name="schedule_tab_all">전체</string>
+    <string name="schedule_tab_sights">관광</string>
+    <string name="schedule_tab_restaurant">맛집</string>
+    <string name="schedule_tap_shopping">쇼핑</string>
+    <string name="schedule_tv_save_choicePlace">저장</string>
+    <string name="schedule_tap_add_place">관광지/맛집/호텔 검색</string>
 
 
 </resources>

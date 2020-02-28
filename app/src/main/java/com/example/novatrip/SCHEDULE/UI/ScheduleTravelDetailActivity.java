@@ -93,8 +93,8 @@ public class ScheduleTravelDetailActivity extends AppCompatActivity implements V
         //초기화
         tv_travelName = findViewById(R.id.tv_travelName);
         tv_travelPriod = findViewById(R.id.tv_travelPriod);
-        tv_editTravelPlan = findViewById(R.id.tv_editTravelPlan);
-        tv_saveTravelPlan = findViewById(R.id.tv_saveTravelPlan);
+//        tv_editTravelPlan = findViewById(R.id.tv_editTravelPlan);
+//        tv_saveTravelPlan = findViewById(R.id.tv_saveTravelPlan);
         context = this;
         olympicGameArrayList= new ArrayList<>();
 
@@ -291,68 +291,68 @@ public class ScheduleTravelDetailActivity extends AppCompatActivity implements V
 
     @Override
     public void onClick(View v) {
-
+//TODO: 메인에서 일정, 저장하기 버튼 클릭시
         switch (v.getId()){
-            case R.id.tv_saveTravelPlan:
-                Log.d(TAG, "onClick: 여행일정 서버에 저장! ");
-                ArrayList<ItemTravelPlan> itemTravelPlans =  adapterSchedulTravelPlanAndDetail.getTravelPlanList();
-                Log.d(TAG, "onClick: ");
+//            case R.id.tv_saveTravelPlan:
+//                Log.d(TAG, "onClick: 여행일정 서버에 저장! ");
+//                ArrayList<ItemTravelPlan> itemTravelPlans =  adapterSchedulTravelPlanAndDetail.getTravelPlanList();
+//                Log.d(TAG, "onClick: ");
+//
+//                for(int i=0; i<itemTravelPlans.size(); i++){
+//
+//                     ArrayList<ItemTravelDetail> itemTravelDetails =  itemTravelPlans.get(i).getAdapter_child().getItemTravelDetailArrayList();
+//
+//                     for(int j=0; j<itemTravelDetails.size(); j++){
+//                      ItemTravelDetail itemTravelDetail = itemTravelDetails.get(i);
+//                      if(itemTravelDetail.getOlympicGame() == null){
+//
+//                          /***
+//                           Call<Integer> postSaveTravelPlanDetail (@Field("idx_travel_plan") int idx_travel_plan , @Field("unixtime_travel_plan_detail") long unixtime_travel_plan_detail
+//                           ,@Field("travel_route_order") int travel_route_order , @Field("idx_place_or_olympic") int idx_place_or_olympic
+//                           ,@Field("category_travel_plan_detail") int category_travel_plan_detail
+//                           ,@Field("start_time_place_detail") String start_time_place_detail , @Field("end_time_place_detail") String end_time_place_detail
+//                           );
+//                           ***/
+//                          Log.d(TAG, "onClick: 일반일정 아이템");
+//                          Place place = itemTravelDetail.getPlace();
+//                          Log.d(TAG, "onClick: place "+place);
+//
+//                          int idx_travel_plan = itemTravelDetail.getIdx_travel_plan();
+//                          String unixtime_travel_plan_detail =  itemTravelDetails.get(i).getUnixtime_travel_plan_detail() ;
+//                          int travel_route_order = itemTravelDetail.getRoute_order_travel();
+//                          int idx_place_or_olympic = place.getIdx_local();
+//                          int category_travel_plan_detail = CATEGORY_PLACE;
+//                          String start_time_place_detail = place.getStart_time_place();
+//                          String end_time_place_detail = place.getEnd_time_place();
+//
+//                          Log.d(TAG, "onClick: 서버로 보내는 정보 idx_travel_plan " +idx_travel_plan);
+//                          Log.d(TAG, "onClick: 서버로 보내는 정보 unixtime_travel_plan_detail " +unixtime_travel_plan_detail);
+//                          Log.d(TAG, "onClick: 서버로 보내는 정보 travel_route_order " +travel_route_order);
+//                          Log.d(TAG, "onClick: 서버로 보내는 정보 idx_place_or_olympic " +idx_place_or_olympic);
+//                          Log.d(TAG, "onClick: 서버로 보내는 정보 category_travel_plan_detail " +category_travel_plan_detail);
+//                          Log.d(TAG, "onClick: 서버로 보내는 정보 start_time_place_detail " +start_time_place_detail);
+//                          Log.d(TAG, "onClick: 서버로 보내는 정보 end_time_place_detail " +end_time_place_detail);
+//
+//                          retroBaseApi = retrofit.getRetrofit().create(RetroBaseApi.class);
+//                          retroBaseApi.postSaveTravelPlanDetail(idx_travel_plan , unixtime_travel_plan_detail
+//                                  , travel_route_order , idx_place_or_olympic
+//                                  , category_travel_plan_detail , start_time_place_detail , end_time_place_detail)
+//                                  .enqueue(new Callback<Integer>() {
+//                                      @Override
+//                                      public void onResponse(Call<Integer> call, Response<Integer> response) {
+//                                          Log.d(TAG, "onResponse: 서버 결과  " + response.body());
+//                                      }
+//
+//                                      @Override
+//                                      public void onFailure(Call<Integer> call, Throwable t) {
+//                                          Log.d(TAG, "onFailure: "+ t.getMessage());
+//                                      }
+//                                  });
+//                      }
+//                     }
+//                }
 
-                for(int i=0; i<itemTravelPlans.size(); i++){
-
-                     ArrayList<ItemTravelDetail> itemTravelDetails =  itemTravelPlans.get(i).getAdapter_child().getItemTravelDetailArrayList();
-
-                     for(int j=0; j<itemTravelDetails.size(); j++){
-                      ItemTravelDetail itemTravelDetail = itemTravelDetails.get(i);
-                      if(itemTravelDetail.getOlympicGame() == null){
-
-                          /***
-                           Call<Integer> postSaveTravelPlanDetail (@Field("idx_travel_plan") int idx_travel_plan , @Field("unixtime_travel_plan_detail") long unixtime_travel_plan_detail
-                           ,@Field("travel_route_order") int travel_route_order , @Field("idx_place_or_olympic") int idx_place_or_olympic
-                           ,@Field("category_travel_plan_detail") int category_travel_plan_detail
-                           ,@Field("start_time_place_detail") String start_time_place_detail , @Field("end_time_place_detail") String end_time_place_detail
-                           );
-                           ***/
-                          Log.d(TAG, "onClick: 일반일정 아이템");
-                          Place place = itemTravelDetail.getPlace();
-                          Log.d(TAG, "onClick: place "+place);
-
-                          int idx_travel_plan = itemTravelDetail.getIdx_travel_plan();
-                          String unixtime_travel_plan_detail =  itemTravelDetails.get(i).getUnixtime_travel_plan_detail() ;
-                          int travel_route_order = itemTravelDetail.getRoute_order_travel();
-                          int idx_place_or_olympic = place.getIdx_local();
-                          int category_travel_plan_detail = CATEGORY_PLACE;
-                          String start_time_place_detail = place.getStart_time_place();
-                          String end_time_place_detail = place.getEnd_time_place();
-
-                          Log.d(TAG, "onClick: 서버로 보내는 정보 idx_travel_plan " +idx_travel_plan);
-                          Log.d(TAG, "onClick: 서버로 보내는 정보 unixtime_travel_plan_detail " +unixtime_travel_plan_detail);
-                          Log.d(TAG, "onClick: 서버로 보내는 정보 travel_route_order " +travel_route_order);
-                          Log.d(TAG, "onClick: 서버로 보내는 정보 idx_place_or_olympic " +idx_place_or_olympic);
-                          Log.d(TAG, "onClick: 서버로 보내는 정보 category_travel_plan_detail " +category_travel_plan_detail);
-                          Log.d(TAG, "onClick: 서버로 보내는 정보 start_time_place_detail " +start_time_place_detail);
-                          Log.d(TAG, "onClick: 서버로 보내는 정보 end_time_place_detail " +end_time_place_detail);
-
-                          retroBaseApi = retrofit.getRetrofit().create(RetroBaseApi.class);
-                          retroBaseApi.postSaveTravelPlanDetail(idx_travel_plan , unixtime_travel_plan_detail
-                                  , travel_route_order , idx_place_or_olympic
-                                  , category_travel_plan_detail , start_time_place_detail , end_time_place_detail)
-                                  .enqueue(new Callback<Integer>() {
-                                      @Override
-                                      public void onResponse(Call<Integer> call, Response<Integer> response) {
-                                          Log.d(TAG, "onResponse: 서버 결과  " + response.body());
-                                      }
-
-                                      @Override
-                                      public void onFailure(Call<Integer> call, Throwable t) {
-                                          Log.d(TAG, "onFailure: "+ t.getMessage());
-                                      }
-                                  });
-                      }
-                     }
-                }
-
-                break;
+//                break;
 
             case R.id.btn_addAirLint :
                 Log.d(TAG, "onClick: 항공 추가");
@@ -692,7 +692,7 @@ public class ScheduleTravelDetailActivity extends AppCompatActivity implements V
                         itemTravelDetail.setRoute_order_travel(itemTravelDetailArrayList_child.size());
                         Log.d(TAG, "onActivityResult: 추가할 호텔 일정에 위치 "+ itemTravelDetailArrayList_child.size());
                         itemTravelDetail.setPlace(choiceHotel);
-                        itemTravelDetail.setCategory_travel_plan_detail(PlaceIDX);
+                        itemTravelDetail.setCategory_travel_plan_detail(category_travel_plan_detail_Place);
                         itemTravelDetail.setUnixtime_travel_plan_detail(itemTravelPlan.getUnixtime());
                         itemTravelDetail.setIdx_travel_plan(idx_travel_plan);
 
@@ -705,9 +705,9 @@ public class ScheduleTravelDetailActivity extends AppCompatActivity implements V
 //                        //추가할 아이템 만듦.
                         ItemTravelDetail itemTravelDetail_end = new ItemTravelDetail();
 
-                        itemTravelDetail_end.setRoute_order_travel( 0);
+                        itemTravelDetail_end.setRoute_order_travel(0);
                         itemTravelDetail_end.setPlace(choiceHotel);
-                        itemTravelDetail_end.setCategory_travel_plan_detail(PlaceIDX);
+                        itemTravelDetail_end.setCategory_travel_plan_detail(category_travel_plan_detail_Place);
                         itemTravelDetail_end.setUnixtime_travel_plan_detail(itemTravelPlan.getUnixtime());
                         itemTravelDetail_end.setIdx_travel_plan(idx_travel_plan);
 

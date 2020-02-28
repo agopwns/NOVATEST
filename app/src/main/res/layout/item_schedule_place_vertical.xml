@@ -81,7 +81,7 @@
         android:layout_width="50dp"
         android:layout_height="30dp"
         android:textSize="10dp"
-        android:text="선택"
+        android:text="@string/schedule_plan_choice"
         android:textColor="@color/BLACK"
         android:background="#eeeeee"
         />
