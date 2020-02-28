@@ -10,16 +10,16 @@ public class ItemTravelDetail  implements Parcelable {
     private String unixtime_travel_plan_detail;
     private int route_order_travel;
 
-    //카테고리
+    //카테고리 장소 테이블인지, 공항 테이블인지, 올림픽 테이블인지 구분
     private int  category_travel_plan_detail;
-    public static int OlympicGameIDX = 1; // 올림픽 경기
-    public static int PlaceIDX = 2; // 숙소 또는 여행지
-    public static int AirlineIDX = 3; // 공항
-    public static int HotelIDX = 4; // 공항
+    public static int category_travel_plan_detail_Place = 1;
+    public static int category_travel_plan_detail_Airline = 2;
+    public static int category_travel_plan_detail_Olympic = 3;
 
-    //TODO:여행 일정중 올림픽 제외한 장소 추가해야함.
+    //객체
     private OlympicGame olympicGame;
     private Place place;
+    private AIRLINE airline;
 
     public AIRLINE getAirline() {
         return airline;
@@ -28,8 +28,6 @@ public class ItemTravelDetail  implements Parcelable {
     public void setAirline(AIRLINE airline) {
         this.airline = airline;
     }
-
-    private AIRLINE airline;
 
     public ItemTravelDetail(Parcel in) {
         idx_travel_plan = in.readInt();

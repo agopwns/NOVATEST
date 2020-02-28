@@ -64,7 +64,7 @@
 
             <EditText
                 android:background="@null"
-                android:id="@+id/result_flight_number"
+                android:id="@+id/et_airline"
                 android:text="티웨이항공(TW)101"
                 android:textSize="18sp"
                 android:paddingTop="8dp"
@@ -86,7 +86,7 @@
 
             <EditText
                 android:background="@null"
-                android:id="@+id/result_departure_airport"
+                android:id="@+id/et_name_start_airport"
                 android:text="인천국제공항(ICN)"
                 android:textSize="18sp"
                 android:paddingTop="8dp"
@@ -200,7 +200,7 @@
 
             <TextView
                 android:background="@null"
-                android:id="@+id/result_departure_time"
+                android:id="@+id/tv_time_start"
                 android:text="08:30"
                 android:textStyle="bold"
                 android:textSize="18sp"
@@ -223,7 +223,7 @@
 
             <EditText
                 android:background="@null"
-                android:id="@+id/result_arrival_airport"
+                android:id="@+id/et_end_airport"
                 android:text="도쿄(나리타)(NRT) "
                 android:textSize="18sp"
                 android:paddingTop="8dp"
@@ -267,7 +267,7 @@
                         android:padding="6dp">
 
                         <TextView
-                            android:id="@+id/tv_choice_endDate"
+
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal|bottom"
@@ -280,7 +280,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/result_departure_date"
+                android:id="@+id/tv_choice_endDate"
                 android:text="2020. 07. 29"
                 android:textStyle="bold"
                 android:textSize="18sp"
@@ -339,7 +339,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/result_arrival_time"
+                android:id="@+id/tv_time_end"
                 android:text="11:00"
                 android:textStyle="bold"
                 android:textSize="18sp"

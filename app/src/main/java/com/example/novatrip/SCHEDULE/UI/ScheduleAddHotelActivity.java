@@ -51,7 +51,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.example.novatrip.SCHEDULE.UI.ScheduleOlympicDailyScedule.UnixTimeToDay;
-import static com.example.novatrip.SCHEDULE.Unit.ItemTravelDetail.HotelIDX;
+
 
 public class ScheduleAddHotelActivity extends AppCompatActivity {
 
@@ -316,11 +316,11 @@ public class ScheduleAddHotelActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
 
-        if (resultCode == RESULT_OK && requestCode == HotelIDX) {
-            if(data != null){
-                Toast.makeText(this, "Select Date range : " + data.getStringExtra(AirCalendarDatePickerActivity.RESULT_SELECT_START_DATE) + " ~ " + data.getStringExtra(AirCalendarDatePickerActivity.RESULT_SELECT_END_DATE), Toast.LENGTH_SHORT).show();
-            }
-        }
+//        if (resultCode == RESULT_OK && requestCode == HotelIDX) {
+//            if(data != null){
+//                Toast.makeText(this, "Select Date range : " + data.getStringExtra(AirCalendarDatePickerActivity.RESULT_SELECT_START_DATE) + " ~ " + data.getStringExtra(AirCalendarDatePickerActivity.RESULT_SELECT_END_DATE), Toast.LENGTH_SHORT).show();
+//            }
+//        }
     }
 
 

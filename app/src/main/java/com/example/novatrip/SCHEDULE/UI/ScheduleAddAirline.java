@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.novatrip.R;
 import com.example.novatrip.SCHEDULE.Adapter.AdapterScheduleAddLocal;
@@ -27,6 +29,7 @@ import java.util.Locale;
 import static com.example.novatrip.SCHEDULE.UI.ScheduleOlympicDailyScedule.UnixTimeToDay;
 
 public class ScheduleAddAirline extends AppCompatActivity {
+
     String TAG = "ScheduleAddAirline";
     Button btn_add_airline;
     BottomSheetDialog dialog;
@@ -34,12 +37,24 @@ public class ScheduleAddAirline extends AppCompatActivity {
     ArrayList<Date> dateArrayList;
     String[] toColum;
 
+    EditText et_airline , et_name_start_airport , et_end_airport ;
+    TextView tv_choice_startDate, tv_time_start, tv_choice_endDate , tv_time_end ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sche_dule_add_airline_acrivity);
 
+        //초기화
         btn_add_airline = findViewById(R.id.btn_add_airline);
+        et_airline = findViewById(R.id.et_airline);
+        et_name_start_airport = findViewById(R.id.et_name_start_airport);
+        et_end_airport = findViewById(R.id.et_end_airport);
+        tv_choice_startDate = findViewById(R.id.tv_choice_startDate);
+        tv_time_start = findViewById(R.id.tv_time_start);
+        tv_choice_endDate = findViewById(R.id.tv_choice_endDate);
+        tv_time_end = findViewById(R.id.tv_time_end);
+
         dateArrayList = new ArrayList<>();
 
         //메인에서 보낸 여행일자가 나열된 string 을 받음
@@ -73,11 +88,12 @@ public class ScheduleAddAirline extends AppCompatActivity {
         });
 
 
+        //다이얼로그에서 항공편을 추가하고자 하는 날짜를 선택한다면
         adpaterScheduleDate.ClickListener_clickLisenerSchedulePlaceItem(new ClickLisenerSchedulDateItem() {
             @Override
             public void OnItemClick(Date date, int position) {
 
-                Log.d(TAG, "OnItemClick: 항공편 일정을 추가할 날짜를 선택하면 ");
+                Log.d(TAG, "OnItemClick: 항공편 일정을 추가할 날짜를 선택하면 사용자가 선택한 항공에 대한 정보를 가져온다. ");
 
                 AIRLINE airline = new AIRLINE();
 
@@ -92,6 +108,17 @@ public class ScheduleAddAirline extends AppCompatActivity {
                 airline.setLon_start_airport(126.4385017);
                 airline.setLat_end_airport(35.7719867);
                 airline.setLon_end_airport(140.3906561);
+
+//                et_airline  , et_name_start_airport , et_end_airport ;
+//                  tv_choice_startDate, tv_time_start, tv_choice_endDate , tv_time_end ;
+
+//                String airline =  et_airline.getText().toString();
+//                String name_start_airport = et_name_start_airport.getText().toString();
+//                String end_airport = et_end_airport.getText().toString();
+//                String startDate = tv_choice_startDate.getText().toString();
+//                String endDate = tv_choice_endDate.getText().toString();
+//                String time_start = tv_time_start.getText().toString();
+//                String time_end = tv_time_end.getText().toString();
 
                 Log.d(TAG, "OnItemClick: 사용자가 입력한 항공일정 정보를 받아와서 airline객체로 만든다. ");
 

@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
-import static com.example.novatrip.SCHEDULE.Unit.ItemTravelDetail.HotelIDX;
+import static com.example.novatrip.SCHEDULE.Unit.Place.category_place_hotel;
 
 public class AdapterScheduleAddPlace extends RecyclerView.Adapter<AdapterScheduleAddPlace.holer> {
 
@@ -96,7 +96,7 @@ public class AdapterScheduleAddPlace extends RecyclerView.Adapter<AdapterSchedul
         holder.tv_placeName.setText(place.getName_place_detail());
         Log.d(TAG, "onBindViewHolder: "+position+" 번째 위치 ,  이름 set "+ place.getName_place_detail());
 
-        if(place.getCategory_place() == HotelIDX){
+        if(place.getCategory_place() == category_place_hotel){
             String businesshours =  "check in: "+UnixTimeToTime(place.getStart_time_place())+ "\n" + "check out: "+ UnixTimeToTime(place.getEnd_time_place());
             Log.d(TAG, "onBindViewHolder: "+position+" 번째 위치 ,  영업시간 set "+ businesshours);
             holder.tv_businesshours.setText(businesshours);
