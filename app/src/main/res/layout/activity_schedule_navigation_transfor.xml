@@ -8,7 +8,7 @@
     android:paddingTop="?attr/actionBarSize">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        app:labelVisibilityMode="unlabeled"
+        app:labelVisibilityMode="labeled"
         android:id="@+id/nav_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

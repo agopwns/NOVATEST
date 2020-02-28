@@ -225,7 +225,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/add"
+            android:id="@+id/btn_add_airline"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:layout_marginTop="8dp"
@@ -233,7 +233,7 @@
             android:layout_marginBottom="24dp"
             android:layout_marginLeft="16dp"
             android:background="@drawable/btn"
-            android:text="일정에 추가"
+            android:text="등록"
             android:layout_width="match_parent"
             android:layout_height="40dp" />
 

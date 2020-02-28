@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:orientation="vertical">
 
     <LinearLayout
@@ -26,9 +25,10 @@
             android:layout_weight="1"
             android:layout_height="50dp"
             android:layout_gravity="center_vertical"
-            android:hint="관광지/맛집/호텔 검색"
+            android:hint="@string/schedule_tap_add_place"
             android:background="@null"
             />
+
         <LinearLayout
             android:layout_marginRight="10dp"
             android:layout_width="50dp"
@@ -45,7 +45,7 @@
                 android:id="@+id/tv_save_choicePlace"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="저장"
+                android:text="@string/schedule_tv_save_choicePlace"
                 android:textSize="15dp"
                 android:layout_gravity="center"
                 android:paddingHorizontal="10dp"
@@ -61,11 +61,11 @@
     </LinearLayout>
 
 <!--사용자가 선택한 아이템을 보여줄 가로 리사이클러뷰 -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/recycler_view_choice_place"
-        />
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/recycler_view_choice_place"-->
+<!--        />-->
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tablayout"
@@ -80,31 +80,28 @@
             android:id="@+id/tab_all"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="전체" />
+            android:text="@string/schedule_tab_all" />
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tab_sights"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="관광" />
+            android:text="@string/schedule_tab_sights" />
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tab_restaurant"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="맛집" />
+            android:text="@string/schedule_tab_restaurant" />
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tap_shopping"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="쇼핑" />
+            android:text="@string/schedule_tap_shopping" />
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
-
-
 
 </LinearLayout>

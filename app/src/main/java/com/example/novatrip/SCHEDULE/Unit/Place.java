@@ -15,6 +15,13 @@ public class Place  implements Parcelable {
     private String start_time_place; // 원래는 Time type인데.. 서버에서 받아올 때 09:00:00값을 인식할 수 없어서 일단 string type으로 받음.
     private String end_time_place; // 원래는 Time type인데.. 서버에서 받아올 때 09:00:00값을 인식할 수 없어서 일단 string type으로 받음.
     private int category_place; // 음식점인지 관광지인지...
+
+    public static int category_place_restaurant = 1; // 음식점
+    public static int category_place_shopping = 2; // 쇼핑
+    public static int category_place_tourist_destination = 3; // 관광
+    public static int category_place_hotel = 4; // 숙소
+
+
     private String img_url_place;// 이미지
     private String place_id;
 

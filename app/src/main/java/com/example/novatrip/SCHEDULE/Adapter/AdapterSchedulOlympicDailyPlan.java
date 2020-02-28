@@ -33,7 +33,6 @@ public class AdapterSchedulOlympicDailyPlan  extends RecyclerView.Adapter<Adapte
 
     public AdapterSchedulOlympicDailyPlan (Context context_ ){
         this.context = context_;
-
     }
 
     public void setLocalList (ArrayList<OlympicGame> olympicGameArrayList) {

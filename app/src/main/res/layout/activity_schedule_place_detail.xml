@@ -48,23 +48,23 @@
             android:id="@+id/tab_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="소개" />
+            android:text="@string/schedule_tab_info" />
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tab_famousRestaurant"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="주변 맛집" />
+            android:text="@string/schedule_tab_famousRestaurant" />
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tab_touristAttraction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="주변 관광지" />
+            android:text="@string/schedule_tab_touristAttraction" />
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tab_recommendation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="추천" />
+            android:text="@string/schedule_tab_recommendation" />
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager.widget.ViewPager

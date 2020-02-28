@@ -19,7 +19,13 @@ import com.example.novatrip.SCHEDULE.ClickLisener.ClickLisenerSchedulPlaceItem;
 import com.example.novatrip.SCHEDULE.Unit.Local;
 import com.example.novatrip.SCHEDULE.Unit.Place;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
+
+import static com.example.novatrip.SCHEDULE.Unit.Place.category_place_hotel;
 
 public class AdapterScheduleAddPlace extends RecyclerView.Adapter<AdapterScheduleAddPlace.holer> {
 
@@ -28,6 +34,7 @@ public class AdapterScheduleAddPlace extends RecyclerView.Adapter<AdapterSchedul
     ArrayList<Place> placeArrayList = new ArrayList<>() ;
     Context context;
     ClickLisenerSchedulPlaceItem clickLisenerSchedulPlaceItem;
+    String formatedTime;
 
     public AdapterScheduleAddPlace(Context context_){
         this.context = context_;
@@ -62,6 +69,25 @@ public class AdapterScheduleAddPlace extends RecyclerView.Adapter<AdapterSchedul
         return new AdapterScheduleAddPlace.holer(view);
     }
 
+
+    public   String UnixTimeToTime(String time) {
+        try {
+
+            SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
+            Date dt = sdf.parse(time);
+
+            SimpleDateFormat sdfs = new SimpleDateFormat("hh:mm");
+              formatedTime = sdfs.format(dt);
+
+            Log.v("parseTime", formatedTime);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return formatedTime;
+    }
+
+
     @Override
     public void onBindViewHolder(@NonNull AdapterScheduleAddPlace.holer holder, final int position) {
         final Place place = placeArrayList.get(position);
@@ -70,9 +96,14 @@ public class AdapterScheduleAddPlace extends RecyclerView.Adapter<AdapterSchedul
         holder.tv_placeName.setText(place.getName_place_detail());
         Log.d(TAG, "onBindViewHolder: "+position+" 번째 위치 ,  이름 set "+ place.getName_place_detail());
 
-        String businesshours = place.getStart_time_place()+" ~ "+ place.getEnd_time_place();
-        Log.d(TAG, "onBindViewHolder: "+position+" 번째 위치 ,  영업시간 set "+ businesshours);
-        holder.tv_businesshours.setText(businesshours);
+        if(place.getCategory_place() == category_place_hotel){
+            String businesshours =  "check in: "+UnixTimeToTime(place.getStart_time_place())+ "\n" + "check out: "+ UnixTimeToTime(place.getEnd_time_place());
+            Log.d(TAG, "onBindViewHolder: "+position+" 번째 위치 ,  영업시간 set "+ businesshours);
+            holder.tv_businesshours.setText(businesshours);
+        }else if(place.getStart_time_place().equals("00:00:00") ){
+            Log.d(TAG, "onBindViewHolder: "+"00:00:00 ");
+        }
+
 
 
         Glide.with(context)

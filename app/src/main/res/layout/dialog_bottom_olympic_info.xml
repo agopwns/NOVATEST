@@ -105,7 +105,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:background="@drawable/round_gray"
-            android:text="메모 추가"
+            android:text="@string/schedule_add_memo"
             android:textSize="15dp"
             />
         <!--        TODO: 메모추가기능 만들어야함. -->
@@ -118,7 +118,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:background="@drawable/round_gray"
-            android:text="상세 보기"
+            android:text="@string/schedule_show_detail"
             android:textSize="15dp"
             />
     </LinearLayout>

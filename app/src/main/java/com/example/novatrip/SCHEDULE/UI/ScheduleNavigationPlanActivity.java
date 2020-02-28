@@ -55,8 +55,6 @@ public class ScheduleNavigationPlanActivity extends AppCompatActivity implements
         }
     }
 
-
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -68,8 +66,6 @@ public class ScheduleNavigationPlanActivity extends AppCompatActivity implements
 
     public static void initBottonNavigationView(final Context activity , BottomNavigationView bottomNavigationView, final int number) {
         Log.d("ScheduleNavigation", "initBottonNavigationView: 하단버튼 클릭~! ");
-//        ScheduleBottomNavigationViewHelper.disableShiftMode(bottomNavigationView ) ;
-
         removeNavigationShiftMode(bottomNavigationView);
         Menu menu = bottomNavigationView.getMenu();
         MenuItem menuItem = menu.getItem(number);
@@ -141,9 +137,8 @@ public class ScheduleNavigationPlanActivity extends AppCompatActivity implements
     @SuppressLint("RestrictedApi")
     public static void removeNavigationShiftMode(BottomNavigationView view) {
         BottomNavigationMenuView menuView = (BottomNavigationMenuView) view.getChildAt(0);
-        menuView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_AUTO);
+        //여기서 bottomNavigationView 하단에 글자가 나올지 안나올지 설정 .
+        menuView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
         menuView.buildMenuView();
     }
-
-
 }

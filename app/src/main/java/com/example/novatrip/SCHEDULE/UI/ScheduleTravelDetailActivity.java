@@ -11,6 +11,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +25,7 @@ import com.example.novatrip.SCHEDULE.ClickLisener.ClickLisenerSchedulLocalItem;
 import com.example.novatrip.SCHEDULE.ClickLisener.ClickLisenerSchedulTravelDetailitem;
 import com.example.novatrip.SCHEDULE.Retrofit.RetroBaseApi;
 import com.example.novatrip.SCHEDULE.Retrofit.retrofit;
+import com.example.novatrip.SCHEDULE.Unit.AIRLINE;
 import com.example.novatrip.SCHEDULE.Unit.ItemTravelDetail;
 import com.example.novatrip.SCHEDULE.Unit.ItemTravelPlan;
 import com.example.novatrip.SCHEDULE.Unit.Local;
@@ -32,7 +34,7 @@ import com.example.novatrip.SCHEDULE.Unit.Place;
 import com.example.novatrip.SCHEDULE.Unit.TravelPlan;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
-import java.lang.reflect.Array;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -41,8 +43,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.example.novatrip.SCHEDULE.Unit.ItemTravelDetail.OlympicGameIDX;
-import static com.example.novatrip.SCHEDULE.Unit.ItemTravelDetail.PlaceIDX;
+import static com.example.novatrip.SCHEDULE.Unit.ItemTravelDetail.category_travel_plan_detail_Airline;
+import static com.example.novatrip.SCHEDULE.Unit.ItemTravelDetail.category_travel_plan_detail_Olympic;
+import static com.example.novatrip.SCHEDULE.Unit.ItemTravelDetail.category_travel_plan_detail_Place;
 
 /**
  * 사용자가 선택한 여행기간을 부모 리사이클러뷰의 아이템으로 보여줌.
@@ -69,11 +72,16 @@ public class ScheduleTravelDetailActivity extends AppCompatActivity implements V
     BottomSheetDialog dialog;
     Context context;
 
+    String[] toColum;
+
+
+    Button btn_addAirLint, btn_addHotel, btn_add_olympic;
 
     final static int REQUST_ADD_OLYMPIC_DAILY_PLAN = 200;
     final static int REQUST_ADD_PLACE_DAILY_PLAN = 300;
     final static int CATEGORY_OLYMPIC = 2;
     final static int CATEGORY_PLACE = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,10 +93,14 @@ public class ScheduleTravelDetailActivity extends AppCompatActivity implements V
         //초기화
         tv_travelName = findViewById(R.id.tv_travelName);
         tv_travelPriod = findViewById(R.id.tv_travelPriod);
-        tv_editTravelPlan = findViewById(R.id.tv_editTravelPlan);
-        tv_saveTravelPlan = findViewById(R.id.tv_saveTravelPlan);
+//        tv_editTravelPlan = findViewById(R.id.tv_editTravelPlan);
+//        tv_saveTravelPlan = findViewById(R.id.tv_saveTravelPlan);
         context = this;
         olympicGameArrayList= new ArrayList<>();
+
+        btn_addAirLint = findViewById(R.id.btn_addAirLint);
+        btn_addHotel = findViewById(R.id.btn_addHotel);
+        btn_add_olympic= findViewById(R.id.btn_add_olympic);
 
         //첫 화면에선 저장버튼이 안보임
         tv_saveTravelPlan.setVisibility(View.GONE);
@@ -98,6 +110,9 @@ public class ScheduleTravelDetailActivity extends AppCompatActivity implements V
         //클릭 리스터
         tv_editTravelPlan.setOnClickListener(this);
         tv_saveTravelPlan.setOnClickListener(this);
+        btn_add_olympic .setOnClickListener(this);
+        btn_addAirLint.setOnClickListener(this);
+        btn_addHotel.setOnClickListener(this);
 
         //여행 일정에 부모 리사이클러뷰를 init
         recyclerview_TravelParent = findViewById(R.id.recyclerview_TravelParent);
@@ -107,14 +122,13 @@ public class ScheduleTravelDetailActivity extends AppCompatActivity implements V
         loadTravelPlan ();
 
 
-
-
         //큰 일정 아이템의 일정추가하기 버튼 클릭시 일어날 이벤트
         //선택할 수 있는 지역을 보여줄 리사이클러뷰 init
         //arraylist에 지역 추가.
         adapterSchedulTravelPlanAndDetail.ClickListener_clickLisenerSchedulAddTravelDetailItem(new ClickLisenerSchedulAddTravelLocation() {
             @Override
             public void OnItemClick(String unixTime, int position) {
+
                 localArrayList_choice = new ArrayList<>();
 
 //                // 만약 unixTime이 올림픽 시작일(7/22일)보다 크고 종료일(8/?)일 보다 작으면 올림픽 기간으로 생각해서 일정 추갈할 때 올림픽 관련 일정 추가.
@@ -135,13 +149,16 @@ public class ScheduleTravelDetailActivity extends AppCompatActivity implements V
                 //일반 여행 지역 추가.
                 String[] toColum = travelPlan.getTravel_local().split(",");
                 for (int i = 0 ; i< toColum.length; i++){
-                    Local local = new Local();
+                     Local local = new Local();
+
                     //idx.
                     local.setIdx_local(Integer.valueOf(toColum[i]));
+
                     //name
                     SharedPreferences sharedPreferences = getSharedPreferences("LOCAL", MODE_PRIVATE);
                     local.setName( sharedPreferences.getString(toColum[i],null));
                     Log.d(TAG, "OnItemClick: 추가한 지역 "+ sharedPreferences.getString(toColum[i],null));
+
                     //여행지 추가.
                     localArrayList_choice.add(local);
                 }
@@ -155,14 +172,11 @@ public class ScheduleTravelDetailActivity extends AppCompatActivity implements V
                 initBottomRecyclerviewLocalList (  unixTime,   position);
             }
         });
-
-
-
-
     }
 
 
     public void setTravelDetailItemClickLisner(){
+
         if(adapterSchedulTravelPlanAndDetail.getTravelPlanList().size() == 0 || adapterSchedulTravelPlanAndDetail.getTravelPlanList() ==null){
             Log.d(TAG, "setTravelDetailItemClickLisner: 리스트 비어있음 ");
             return;
@@ -177,7 +191,7 @@ public class ScheduleTravelDetailActivity extends AppCompatActivity implements V
             adapterSchedulTravelPlanAndDetail.getTravelPlanList().get(i).getAdapter_child().ClickListener_clickLisenerSchedulTravelDetailItem(new ClickLisenerSchedulTravelDetailitem() {
                 @Override
                 public void OnItemClick(final ItemTravelDetail itemTravelDetail,final int position_) {
-                    if(itemTravelDetail.getOlympicGame() == null){
+                    if(itemTravelDetail.getCategory_travel_plan_detail() == category_travel_plan_detail_Place){
 
                         Log.d(TAG, "OnItemClick: 일반 여행 ");
 
@@ -219,13 +233,12 @@ public class ScheduleTravelDetailActivity extends AppCompatActivity implements V
                         dialog.setContentView(dialogView);
                         dialog.show();
 
-                    }else if(itemTravelDetail.getOlympicGame() !=null){
+                    }else if(itemTravelDetail.getCategory_travel_plan_detail()==category_travel_plan_detail_Olympic){
+
                         Log.d(TAG, "OnItemClick: 올림픽 여행 ");
-
                         View dialogView = getLayoutInflater().inflate(R.layout.dialog_bottom_olympic_info, null);
-
                         ImageView iv_profile = dialogView.findViewById(R.id.iv_profile);
-//TODO:올림픽 경기에 관한 이미지 컬럼 만들고 정보 넣어서 보여줘야함.
+                        //TODO:올림픽 경기에 관한 이미지 컬럼 만들고 정보 넣어서 보여줘야함.
                         Glide.with(getApplicationContext())
                                 .load("https://upload.wikimedia.org/wikipedia/ko/thumb/b/b6/2020%EB%85%84_%ED%95%98%EA%B3%84_%EC%98%AC%EB%A6%BC%ED%94%BD_%EB%A1%9C%EA%B3%A0.svg/1200px-2020%EB%85%84_%ED%95%98%EA%B3%84_%EC%98%AC%EB%A6%BC%ED%94%BD_%EB%A1%9C%EA%B3%A0.svg.png")
                                 .thumbnail(0.01f)
@@ -258,6 +271,15 @@ public class ScheduleTravelDetailActivity extends AppCompatActivity implements V
                         dialog = new BottomSheetDialog(context);
                         dialog.setContentView(dialogView);
                         dialog.show();
+                    }else if(itemTravelDetail.getCategory_travel_plan_detail() == category_travel_plan_detail_Airline ){
+
+                        Log.d(TAG, "OnItemClick:  항공편 idx ");
+
+                        View dialogView = getLayoutInflater().inflate(R.layout.dialog_bottom_airline, null);
+
+                        dialog = new BottomSheetDialog(context);
+                        dialog.setContentView(dialogView);
+                        dialog.show();
                     }
 
                 }
@@ -269,73 +291,90 @@ public class ScheduleTravelDetailActivity extends AppCompatActivity implements V
 
     @Override
     public void onClick(View v) {
-
+//TODO: 메인에서 일정, 저장하기 버튼 클릭시
         switch (v.getId()){
-            case R.id.tv_saveTravelPlan:
-                Log.d(TAG, "onClick: 여행일정 서버에 저장! ");
-                ArrayList<ItemTravelPlan> itemTravelPlans =  adapterSchedulTravelPlanAndDetail.getTravelPlanList();
-                Log.d(TAG, "onClick: ");
+//            case R.id.tv_saveTravelPlan:
+//                Log.d(TAG, "onClick: 여행일정 서버에 저장! ");
+//                ArrayList<ItemTravelPlan> itemTravelPlans =  adapterSchedulTravelPlanAndDetail.getTravelPlanList();
+//                Log.d(TAG, "onClick: ");
+//
+//                for(int i=0; i<itemTravelPlans.size(); i++){
+//
+//                     ArrayList<ItemTravelDetail> itemTravelDetails =  itemTravelPlans.get(i).getAdapter_child().getItemTravelDetailArrayList();
+//
+//                     for(int j=0; j<itemTravelDetails.size(); j++){
+//                      ItemTravelDetail itemTravelDetail = itemTravelDetails.get(i);
+//                      if(itemTravelDetail.getOlympicGame() == null){
+//
+//                          /***
+//                           Call<Integer> postSaveTravelPlanDetail (@Field("idx_travel_plan") int idx_travel_plan , @Field("unixtime_travel_plan_detail") long unixtime_travel_plan_detail
+//                           ,@Field("travel_route_order") int travel_route_order , @Field("idx_place_or_olympic") int idx_place_or_olympic
+//                           ,@Field("category_travel_plan_detail") int category_travel_plan_detail
+//                           ,@Field("start_time_place_detail") String start_time_place_detail , @Field("end_time_place_detail") String end_time_place_detail
+//                           );
+//                           ***/
+//                          Log.d(TAG, "onClick: 일반일정 아이템");
+//                          Place place = itemTravelDetail.getPlace();
+//                          Log.d(TAG, "onClick: place "+place);
+//
+//                          int idx_travel_plan = itemTravelDetail.getIdx_travel_plan();
+//                          String unixtime_travel_plan_detail =  itemTravelDetails.get(i).getUnixtime_travel_plan_detail() ;
+//                          int travel_route_order = itemTravelDetail.getRoute_order_travel();
+//                          int idx_place_or_olympic = place.getIdx_local();
+//                          int category_travel_plan_detail = CATEGORY_PLACE;
+//                          String start_time_place_detail = place.getStart_time_place();
+//                          String end_time_place_detail = place.getEnd_time_place();
+//
+//                          Log.d(TAG, "onClick: 서버로 보내는 정보 idx_travel_plan " +idx_travel_plan);
+//                          Log.d(TAG, "onClick: 서버로 보내는 정보 unixtime_travel_plan_detail " +unixtime_travel_plan_detail);
+//                          Log.d(TAG, "onClick: 서버로 보내는 정보 travel_route_order " +travel_route_order);
+//                          Log.d(TAG, "onClick: 서버로 보내는 정보 idx_place_or_olympic " +idx_place_or_olympic);
+//                          Log.d(TAG, "onClick: 서버로 보내는 정보 category_travel_plan_detail " +category_travel_plan_detail);
+//                          Log.d(TAG, "onClick: 서버로 보내는 정보 start_time_place_detail " +start_time_place_detail);
+//                          Log.d(TAG, "onClick: 서버로 보내는 정보 end_time_place_detail " +end_time_place_detail);
+//
+//                          retroBaseApi = retrofit.getRetrofit().create(RetroBaseApi.class);
+//                          retroBaseApi.postSaveTravelPlanDetail(idx_travel_plan , unixtime_travel_plan_detail
+//                                  , travel_route_order , idx_place_or_olympic
+//                                  , category_travel_plan_detail , start_time_place_detail , end_time_place_detail)
+//                                  .enqueue(new Callback<Integer>() {
+//                                      @Override
+//                                      public void onResponse(Call<Integer> call, Response<Integer> response) {
+//                                          Log.d(TAG, "onResponse: 서버 결과  " + response.body());
+//                                      }
+//
+//                                      @Override
+//                                      public void onFailure(Call<Integer> call, Throwable t) {
+//                                          Log.d(TAG, "onFailure: "+ t.getMessage());
+//                                      }
+//                                  });
+//                      }
+//                     }
+//                }
 
-                for(int i=0; i<itemTravelPlans.size(); i++){
-                     ArrayList<ItemTravelDetail> itemTravelDetails =  itemTravelPlans.get(i).getAdapter_child().getItemTravelDetailArrayList();
-                     for(int j=0; j<itemTravelDetails.size(); j++){
-                      ItemTravelDetail itemTravelDetail = itemTravelDetails.get(i);
-                      if(itemTravelDetail.getOlympicGame() == null){
+//                break;
 
-                          /***
-                           Call<Integer> postSaveTravelPlanDetail (@Field("idx_travel_plan") int idx_travel_plan , @Field("unixtime_travel_plan_detail") long unixtime_travel_plan_detail
-                           ,@Field("travel_route_order") int travel_route_order , @Field("idx_place_or_olympic") int idx_place_or_olympic
-                           ,@Field("category_travel_plan_detail") int category_travel_plan_detail
-                           ,@Field("start_time_place_detail") String start_time_place_detail , @Field("end_time_place_detail") String end_time_place_detail
-                           );
-                           *
-                           * ***/
-                          Log.d(TAG, "onClick: 일반일정 아이템");
-                          Place place = itemTravelDetail.getPlace();
-                          Log.d(TAG, "onClick: place "+place);
+            case R.id.btn_addAirLint :
+                Log.d(TAG, "onClick: 항공 추가");
 
-                          int idx_travel_plan = itemTravelDetail.getIdx_travel_plan();
-                          String unixtime_travel_plan_detail =  itemTravelDetails.get(i).getUnixtime_travel_plan_detail() ;
-                          int travel_route_order = itemTravelDetail.getRoute_order_travel();
-                          int idx_place_or_olympic = place.getIdx_local();
-                          int category_travel_plan_detail = CATEGORY_PLACE;
-                          String start_time_place_detail = place.getStart_time_place();
-                          String end_time_place_detail = place.getEnd_time_place();
+                Intent intent = new Intent(getApplicationContext(), ScheduleAddAirline.class);
+                intent.putExtra("toColum",toColum);
+                startActivityForResult(intent, category_travel_plan_detail_Airline);
 
-                          Log.d(TAG, "onClick: 서버로 보내는 정보 idx_travel_plan " +idx_travel_plan);
-                          Log.d(TAG, "onClick: 서버로 보내는 정보 unixtime_travel_plan_detail " +unixtime_travel_plan_detail);
-                          Log.d(TAG, "onClick: 서버로 보내는 정보 travel_route_order " +travel_route_order);
-                          Log.d(TAG, "onClick: 서버로 보내는 정보 idx_place_or_olympic " +idx_place_or_olympic);
-                          Log.d(TAG, "onClick: 서버로 보내는 정보 category_travel_plan_detail " +category_travel_plan_detail);
-                          Log.d(TAG, "onClick: 서버로 보내는 정보 start_time_place_detail " +start_time_place_detail);
-                          Log.d(TAG, "onClick: 서버로 보내는 정보 end_time_place_detail " +end_time_place_detail);
-
-                          retroBaseApi = retrofit.getRetrofit().create(RetroBaseApi.class);
-                          retroBaseApi.postSaveTravelPlanDetail(idx_travel_plan , unixtime_travel_plan_detail
-                                  , travel_route_order , idx_place_or_olympic
-                                  , category_travel_plan_detail , start_time_place_detail , end_time_place_detail)
-                                  .enqueue(new Callback<Integer>() {
-                                      @Override
-                                      public void onResponse(Call<Integer> call, Response<Integer> response) {
-                                          Log.d(TAG, "onResponse: 서버 결과  " + response.body());
-                                      }
-
-                                      @Override
-                                      public void onFailure(Call<Integer> call, Throwable t) {
-                                          Log.d(TAG, "onFailure: "+ t.getMessage());
-                                      }
-                                  });
-                      }
-                     }
-                }
-
+                break;
+            case R.id.btn_addHotel :
+                Log.d(TAG, "onClick: 숙소 추가");
+                Intent intent_addHotel = new Intent(getApplicationContext(), ScheduleAddHotelActivity.class);
+                intent_addHotel.putExtra("toColum",toColum);
+//                startActivityForResult(intent_addHotel, category_travel_plan_detail_Place);
+                //TODO: 고민해야 함.
+                break;
+            case R.id.btn_add_olympic:
+                Log.d(TAG, "onClick: 올림픽 경기 추가");
                 break;
         }
 
     }
-
-
-
 
 
     @Override
@@ -421,6 +460,7 @@ public class ScheduleTravelDetailActivity extends AppCompatActivity implements V
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
         if (requestCode ==REQUST_ADD_OLYMPIC_DAILY_PLAN  && resultCode == RESULT_OK && null != data) {
 
             tv_saveTravelPlan.setVisibility(View.VISIBLE);
@@ -450,7 +490,7 @@ public class ScheduleTravelDetailActivity extends AppCompatActivity implements V
                     Log.d(TAG, "onActivityResult: 자식 리사이클러뷰에 들어갈 item 만듦");
                     itemTravelDetail.setRoute_order_travel(i);
                     itemTravelDetail.setOlympicGame(olympicGameArrayList.get(i));
-                    itemTravelDetail.setCategory_travel_plan_detail(OlympicGameIDX);
+                    itemTravelDetail.setCategory_travel_plan_detail(category_travel_plan_detail_Olympic);
                     itemTravelDetail.setUnixtime_travel_plan_detail(unixTime);
                     itemTravelDetail.setIdx_travel_plan(idx_travel_plan);
 
@@ -468,10 +508,8 @@ public class ScheduleTravelDetailActivity extends AppCompatActivity implements V
 
         }else   if (requestCode ==REQUST_ADD_PLACE_DAILY_PLAN  && resultCode == RESULT_OK && null != data) {
 
-
             tv_editTravelPlan.setVisibility(View.GONE);
             tv_saveTravelPlan.setVisibility(View.VISIBLE);
-
 
             Log.d(TAG, "OnItemClick: 하단에서 여행지 선택해서 추가하려고 하면, 편집버튼 사라지고 저장버튼 나타나기. ");
 
@@ -518,7 +556,7 @@ public class ScheduleTravelDetailActivity extends AppCompatActivity implements V
                 Log.d(TAG, "onActivityResult: 자식 리사이클러뷰에 들어갈 item 만듦");
                 itemTravelDetail.setRoute_order_travel(i);
                 itemTravelDetail.setPlace(placeArrayList.get(i));
-                itemTravelDetail.setCategory_travel_plan_detail(PlaceIDX);
+                itemTravelDetail.setCategory_travel_plan_detail(category_travel_plan_detail_Place);
                 itemTravelDetail.setUnixtime_travel_plan_detail(unixTime_);
                 itemTravelDetail.setIdx_travel_plan(idx_travel_plan);
 
@@ -532,10 +570,207 @@ public class ScheduleTravelDetailActivity extends AppCompatActivity implements V
                 itemTravelPlan.getAdapter_child().notifyDataSetChanged();
                 Log.d(TAG, "onActivityResult: 추가한 리사이클러뷰로 data set change");
 
+            } else if(requestCode ==category_travel_plan_detail_Airline  && resultCode == RESULT_OK && null != data) {
+
+            tv_saveTravelPlan.setVisibility(View.VISIBLE);
+            tv_editTravelPlan.setVisibility(View.GONE);
+            Log.d(TAG, "OnItemClick: 하단에서 여행지 선택해서 추가하려고 하면, 편집버튼 사라지고 저장버튼 나타나기. ");
+
+
+             Log.d(TAG, "onActivityResult: 항공편 등록, ");
+
+             AIRLINE airline  = data.getParcelableExtra("airline");
+             com.example.novatrip.SCHEDULE.Unit.Date  date = data.getParcelableExtra("date");
+            String unixTime =  date.getUnixTime();
+
+             Log.d(TAG, "onActivityResult: 결과 " + airline.getName_airline());
+             Log.d(TAG, "onActivityResult: 결과 " + date.getUnixTime());
+
+            //일정추가 버튼이 속한 리사이클러뷰의 position
+            int postionRecyclerViewParent = data.getIntExtra("position",10000);
+
+            //TravelPlanList에서 해당 position에 있는 itemTravelPlan을 가져오고 해당 아이템의 어뎁터를 꺼낸다.
+            ItemTravelPlan itemTravelPlan =  adapterSchedulTravelPlanAndDetail.getTravelPlanList().get(postionRecyclerViewParent);
+
+            //TravelPlanDetail 을 보여주는 리사이클러뷰의 list를 가져온 후
+            ArrayList<ItemTravelDetail> itemTravelDetails =  itemTravelPlan.getAdapter_child().getItemTravelDetailArrayList();
+
+
+            Log.d(TAG, "onActivityResult: 첫 데이터 추가");
+            ItemTravelDetail addItemTravelDetail = new ItemTravelDetail();
+
+            //정보 set
+
+             /**
+              * //공통
+              *     private int idx_travel_plan;
+              *     private String unixtime_travel_plan_detail;
+              *     private int route_order_travel;//얘는 나중에 .
+              *
+              *     //카테고리
+              *     private int  category_travel_plan_detail;
+              *     public static int OlympicGameIDX = 1; // 올림픽 경기
+              *     public static int PlaceIDX = 2; // 숙소
+              *     public static int AirlineIDX = 3; // 공항
+              *
+              *     //TODO:여행 일정중 올림픽 제외한 장소 추가해야함.
+              *     private OlympicGame olympicGame;
+              *     private Place place;              *
+              ***/
+
+
+             addItemTravelDetail.setRoute_order_travel(itemTravelDetails.size());
+             addItemTravelDetail.setIdx_travel_plan(idx_travel_plan);
+             addItemTravelDetail.setUnixtime_travel_plan_detail(unixTime);
+             addItemTravelDetail.setCategory_travel_plan_detail(category_travel_plan_detail_Airline);
+             addItemTravelDetail.setAirline(airline);
+
+             //새로  airline 정보를 추가한다.
+            itemTravelDetails.add(addItemTravelDetail);
+
+            itemTravelPlan.getAdapter_child().setItemTravelDetailArrayList(itemTravelDetails);
+            itemTravelPlan.getAdapter_child().notifyDataSetChanged();
+            Log.d(TAG, "onActivityResult: 추가한 리사이클러뷰로 data set change");
+
+
+        } else if(requestCode == category_travel_plan_detail_Place  && resultCode == RESULT_OK && null != data) {
+            Log.d(TAG, "onActivityResult: 호텔 등록 호텔도 장소에 속해있어서 장소로 넣!");
+
+
+            Place  choiceHotel = data.getParcelableExtra("hotel");
+
+            Log.d(TAG, "onActivityResult: 받은  check_in " + data.getStringExtra("check_in" ) );
+            Log.d(TAG, "onActivityResult: 받은  check_out " + data.getStringExtra("check_out" ) );
+
+            //부모 리사이클러뷰의 아이템리스트를 꺼낸다.
+            for(int i =0 ; i<adapterSchedulTravelPlanAndDetail.getTravelPlanList().size(); i++ ){
+
+                //아이템 리스트에서 하나씩 꺼내서 시간을 비교할 예정.
+                Log.d(TAG, "onActivityResult: ??? "+i);
+
+                //자식 객체.
+                ItemTravelPlan itemTravelPlan =  adapterSchedulTravelPlanAndDetail.getTravelPlanList().get(i);
+
+                //자식 객체의 어뎁터
+                AdapterSchedulTravelPlanAndDetail.AdapterSchedulTravelDetail schedulTravelDetail = itemTravelPlan.getAdapter_child();
+
+               if(schedulTravelDetail == null){
+                   Log.d(TAG, "onActivityResult: 예외상황 ");
+                    return;
+                }
+
+
+
+                //자식 객체의 리스트.
+                ArrayList<ItemTravelDetail> itemTravelDetailArrayList_child = schedulTravelDetail.getItemTravelDetailArrayList();
+                Log.d(TAG, "onActivityResult: itemTravelDetailArrayList 의 리스트 사이즈  "+itemTravelDetailArrayList_child.size());
+
+                try {
+                    //자식 아이템의 unixtime과 체크인 체크아웃 날짜를 비교하여 숙소 일정을 추가한다.
+                    SimpleDateFormat time = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
+
+                    String unixTime_check_in =  UnixTimeToDay(data.getStringExtra("check_in" ));
+                    Date date_check_in = time.parse(unixTime_check_in);
+
+                    String unixTime_check_out =  UnixTimeToDay(data.getStringExtra("check_out" ));
+                    Date date_check_out = time.parse(unixTime_check_out);
+
+                    Date date_item = time.parse( UnixTimeToDay(itemTravelPlan.getUnixtime()));
+
+                    Log.d(TAG, "UnixTimeToDay: date_check_in " + date_check_in);
+                    Log.d(TAG, "UnixTimeToDay:date_check_out  "+date_check_out);
+                    Log.d(TAG, "UnixTimeToDay: date_item " + date_item);
+
+                    if(date_item.getTime() ==  date_check_in.getTime() ){
+
+                        Log.d(TAG, "onActivityResult: 체크인 날짜 일치  ");
+                        Log.d(TAG, "onActivityResult: 체크인을 하는 날이라면 일정에 제일 마지막에 위치해야 한다.");
+
+                        //추가할 아이템 만듦.
+                        ItemTravelDetail itemTravelDetail = new ItemTravelDetail();
+
+                        itemTravelDetail.setRoute_order_travel(itemTravelDetailArrayList_child.size());
+                        Log.d(TAG, "onActivityResult: 추가할 호텔 일정에 위치 "+ itemTravelDetailArrayList_child.size());
+                        itemTravelDetail.setPlace(choiceHotel);
+                        itemTravelDetail.setCategory_travel_plan_detail(category_travel_plan_detail_Place);
+                        itemTravelDetail.setUnixtime_travel_plan_detail(itemTravelPlan.getUnixtime());
+                        itemTravelDetail.setIdx_travel_plan(idx_travel_plan);
+
+                        itemTravelPlan.getAdapter_child().getItemTravelDetailArrayList().add(itemTravelDetailArrayList_child.size(), itemTravelDetail);
+                        itemTravelPlan.getAdapter_child().notifyItemChanged(itemTravelDetailArrayList_child.size());
+
+                    }else if(date_item.getTime() == date_check_out.getTime()){
+                        Log.d(TAG, "onActivityResult: 체크아웃 날짜 일치 ");
+
+//                        //추가할 아이템 만듦.
+                        ItemTravelDetail itemTravelDetail_end = new ItemTravelDetail();
+
+                        itemTravelDetail_end.setRoute_order_travel(0);
+                        itemTravelDetail_end.setPlace(choiceHotel);
+                        itemTravelDetail_end.setCategory_travel_plan_detail(category_travel_plan_detail_Place);
+                        itemTravelDetail_end.setUnixtime_travel_plan_detail(itemTravelPlan.getUnixtime());
+                        itemTravelDetail_end.setIdx_travel_plan(idx_travel_plan);
+
+                        itemTravelPlan.getAdapter_child().getItemTravelDetailArrayList().add( 0, itemTravelDetail_end);
+                        itemTravelPlan.getAdapter_child().notifyItemChanged( 0);
+
+                    }else if(date_item.getTime() >  date_check_in.getTime() && date_item.getTime() < date_check_out.getTime()  ){
+                        Log.d(TAG, "onActivityResult: 체크인 날짜 사이 ");
+
+//                        //추가할 아이템 만듦.
+                        ItemTravelDetail itemTravelDetail_start = new ItemTravelDetail();
+                        itemTravelDetail_start.setRoute_order_travel(0);
+                        itemTravelDetail_start.setPlace(choiceHotel);
+                        itemTravelDetail_start.setCategory_travel_plan_detail(category_travel_plan_detail_Place);
+                        itemTravelDetail_start.setUnixtime_travel_plan_detail(itemTravelPlan.getUnixtime());
+                        itemTravelDetail_start.setIdx_travel_plan(idx_travel_plan);
+
+                        itemTravelPlan.getAdapter_child().getItemTravelDetailArrayList().add(0, itemTravelDetail_start);
+                        adapterSchedulTravelPlanAndDetail.notifyItemChanged(0);
+
+
+                        //추가할 아이템 만듦.
+                        ItemTravelDetail itemTravelDetail_end = new ItemTravelDetail();
+
+                        itemTravelDetail_end.setRoute_order_travel( itemTravelPlan.getAdapter_child().getItemTravelDetailArrayList().size());
+                        itemTravelDetail_end.setPlace(choiceHotel);
+                        itemTravelDetail_end.setCategory_travel_plan_detail(category_travel_plan_detail_Place);
+                        itemTravelDetail_end.setUnixtime_travel_plan_detail(itemTravelPlan.getUnixtime());
+                        itemTravelDetail_end.setIdx_travel_plan(idx_travel_plan);
+
+                        itemTravelPlan.getAdapter_child().getItemTravelDetailArrayList().add( itemTravelPlan.getAdapter_child().getItemTravelDetailArrayList().size(), itemTravelDetail_end);
+                        itemTravelPlan.getAdapter_child().notifyItemChanged( itemTravelPlan.getAdapter_child().getItemTravelDetailArrayList().size());
+
+                    }else{
+                        Log.d(TAG, "onActivityResult: 기간 일치하지 않음. ");
+                    }
+
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+
+
+
+
             }
+
+//            //TravelPlanDetail 을 보여주는 리사이클러뷰의 list를 가져온 후
+//            ArrayList<ItemTravelDetail> itemTravelDetails =  itemTravelPlan.getAdapter_child().getItemTravelDetailArrayList();x
+
+        }
 
 
     }
+
+
+    private   String UnixTimeToDay(String unixTime) {
+        Date date = new Date(Long.valueOf(unixTime));
+        SimpleDateFormat time = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
+        return time.format(date);
+    }
+
     //여행 일정 부모 리사이클러뷰
     public void initRecyclerviewTravelParent() {
         LinearLayoutManager LayoutManager = new LinearLayoutManager(this);
@@ -556,9 +791,9 @@ public class ScheduleTravelDetailActivity extends AppCompatActivity implements V
 
 
     public void loadTravelPlan (){
-        idx_travel_plan = getIntent().getIntExtra("idx_travel_plan", 10000);
+//        idx_travel_plan = getIntent().getIntExtra("idx_travel_plan", 10000);
         //TODO:TEST중...
-//        idx_travel_plan =   8;
+        idx_travel_plan =   150;
         Log.d(TAG, "onResume: 사용자가 선택한 여행의 idx "+idx_travel_plan);
 
         // 해당 idx 의 일정 정보를 서버에 요청
@@ -593,12 +828,17 @@ public class ScheduleTravelDetailActivity extends AppCompatActivity implements V
 
                             //이  arraylist를 바로 큰 일정을 보여주는 리사이클러뷰에  set할 예정.
                             ArrayList<ItemTravelPlan> itemTravelPlanArrayList = new ArrayList<>();
-                            String[] toColum = priod_list_str.split(",");
+                            toColum = priod_list_str.split(",");
 
                             Log.d(TAG, "onResponse: 추가한 여행지역 idx "+ priod_list_str);
 
                             for (int i = 0 ; i< toColum.length; i++){
+
+                                Log.d(TAG, "onResponse: 자식 어뎁터의 리스트에 들어갈 아이템 만듦");
+                                Log.d(TAG, "onResponse: 서버에 자식 리사이클러뷰에 들어갈 아이템의 상세 정보 (장소, 올림픽, 항공)에 대한 정보를 요청하고, 정보를 받아서");
+                                Log.d(TAG, "onResponse: 객체로 만들고 itemTravelPlan에 set 해야 한다.");
                                 ItemTravelPlan itemTravelPlan = new ItemTravelPlan();
+
                                 itemTravelPlan.setUnixtime(toColum[i]);
                                 itemTravelPlanArrayList.add(i, itemTravelPlan);
 
@@ -622,8 +862,10 @@ public class ScheduleTravelDetailActivity extends AppCompatActivity implements V
     }
 
     public static String UnixTimeToDate(String unixTime) {
+
         Date date = new Date(Long.valueOf(unixTime));
         SimpleDateFormat time = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
+
         return time.format(date);
     }
 

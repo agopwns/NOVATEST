@@ -10,20 +10,30 @@ public class ItemTravelDetail  implements Parcelable {
     private String unixtime_travel_plan_detail;
     private int route_order_travel;
 
-    //카테고리
-    private String  category_travel_plan_detail;
-    public static String OlympicGameIDX = "OLYMPIC";
-    public static String PlaceIDX = "PLACE";
+    //카테고리 장소 테이블인지, 공항 테이블인지, 올림픽 테이블인지 구분
+    private int  category_travel_plan_detail;
+    public static int category_travel_plan_detail_Place = 1;
+    public static int category_travel_plan_detail_Airline = 2;
+    public static int category_travel_plan_detail_Olympic = 3;
 
-    //TODO:여행 일정중 올림픽 제외한 장소 추가해야함.
+    //객체
     private OlympicGame olympicGame;
     private Place place;
+    private AIRLINE airline;
+
+    public AIRLINE getAirline() {
+        return airline;
+    }
+
+    public void setAirline(AIRLINE airline) {
+        this.airline = airline;
+    }
 
     public ItemTravelDetail(Parcel in) {
         idx_travel_plan = in.readInt();
         unixtime_travel_plan_detail = in.readString();
         route_order_travel = in.readInt();
-        category_travel_plan_detail = in.readString();
+        category_travel_plan_detail = in.readInt();
         olympicGame = in.readParcelable(OlympicGame.class.getClassLoader());
         place = in.readParcelable(Place.class.getClassLoader());
     }
@@ -68,13 +78,11 @@ public class ItemTravelDetail  implements Parcelable {
         this.unixtime_travel_plan_detail = unixtime_travel_plan_detail;
     }
 
-
-
-    public String getCategory_travel_plan_detail() {
+    public int getCategory_travel_plan_detail() {
         return category_travel_plan_detail;
     }
 
-    public void setCategory_travel_plan_detail(String category_travel_plan_detail) {
+    public void setCategory_travel_plan_detail(int category_travel_plan_detail) {
         this.category_travel_plan_detail = category_travel_plan_detail;
     }
 
@@ -105,7 +113,7 @@ public class ItemTravelDetail  implements Parcelable {
         dest.writeInt(idx_travel_plan);
         dest.writeString(unixtime_travel_plan_detail);
         dest.writeInt(route_order_travel);
-        dest.writeString(category_travel_plan_detail);
+        dest.writeInt(category_travel_plan_detail);
         dest.writeParcelable(olympicGame, flags);
         dest.writeParcelable(place, flags);
     }

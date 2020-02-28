@@ -128,7 +128,7 @@
             android:layout_height="wrap_content"
             android:textSize="23dp"
             android:textColor="@color/BLACK"
-            android:text="소개"
+            android:text="@string/schedule_tab_info"
             />
         <TextView
             android:layout_width="match_parent"
@@ -173,7 +173,7 @@
             android:layout_height="wrap_content"
             android:textSize="23dp"
             android:textColor="@color/BLACK"
-            android:text="설명"
+            android:text="@string/schedule_plan_intro"
 
             />
 
@@ -185,19 +185,15 @@
             android:layout_height="wrap_content"
             android:textSize="23dp"
             android:textColor="@color/BLACK"
-            android:text="리뷰"
+            android:text="@string/schedule_plan_review"
             />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:text="5개의 리뷰가 보여질 예정"
-            android:gravity="center"
-            />
+
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
 
+            />
+<!--TODO: 리뷰 보여주는거 해야 함.-->
 
 
 

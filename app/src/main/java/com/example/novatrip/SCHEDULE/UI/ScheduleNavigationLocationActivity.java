@@ -18,7 +18,7 @@ public class ScheduleNavigationLocationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_schedule_navigation_location);
+//        setContentView(R.layout.activity_schedule_navigation_location);
     }
 
     @Override

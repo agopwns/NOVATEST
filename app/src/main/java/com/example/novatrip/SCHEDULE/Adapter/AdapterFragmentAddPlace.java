@@ -21,8 +21,6 @@ public class AdapterFragmentAddPlace extends FragmentPagerAdapter {
     int idx_local;
     AdapterScheduleChoicePlace adapterScheduleChoicePlace;
 
-
-
     public AdapterFragmentAddPlace(FragmentManager fm , String unixTime, int position  , int idx_travel_plan , int idx_local , AdapterScheduleChoicePlace adapterScheduleChoicePlace) {
         super(fm);
         this.idx_local = idx_local ;
@@ -30,7 +28,6 @@ public class AdapterFragmentAddPlace extends FragmentPagerAdapter {
         this.position = position ;
         this.idx_travel_plan = idx_travel_plan ;
         this.adapterScheduleChoicePlace = adapterScheduleChoicePlace;
-
     }
 
     @Override
@@ -53,8 +50,6 @@ public class AdapterFragmentAddPlace extends FragmentPagerAdapter {
             default:
                 return null;
         }
-
-
     }
 
     @Override
@@ -62,5 +57,3 @@ public class AdapterFragmentAddPlace extends FragmentPagerAdapter {
         return 4;
     }
 }
-
-
