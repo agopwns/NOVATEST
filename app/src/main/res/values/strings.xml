@@ -13,6 +13,9 @@
     <string name="schedule_login_plan_choiceTravelPriod">기간을 선택해주세요.</string>
     <string name="schedule_login_plan_choiceTravelLocal">여행 지역을 입력해주세요.</string>
 
+
+    <string name="schedule_login_plan_choiceTravelHotel">숙소를 입력해주세요.</string>
+
     <!--    버튼 메뉴-->
     <string name="schedule_plan_title">일정 목록</string>
     <string name="schedule_plan_add">일정 등록</string>

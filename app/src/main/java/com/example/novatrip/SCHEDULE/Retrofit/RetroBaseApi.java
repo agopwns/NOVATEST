@@ -25,6 +25,12 @@ public interface RetroBaseApi {
     @POST("searchKeyWord.php")
     Call<List<Local>> postSearchLoaclKeyWord (@Field("keyword") String keyword  );
 
+
+    @FormUrlEncoded
+    @POST("searchKeyWord_hotel.php")
+    Call<List<Place>> postSearchLoaclKeyWord_Hotel (@Field("keyword") String keyword  );
+
+
     @FormUrlEncoded
     @POST("loadTravelDetail.php")
     Call<TravelPlan> postLoadTravelDetail (@Field("idx_travel_plan") int idx_travel_plan);

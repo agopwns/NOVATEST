@@ -21,8 +21,6 @@ public class AdapterFragmentAddPlace extends FragmentPagerAdapter {
     int idx_local;
     AdapterScheduleChoicePlace adapterScheduleChoicePlace;
 
-
-
     public AdapterFragmentAddPlace(FragmentManager fm , String unixTime, int position  , int idx_travel_plan , int idx_local , AdapterScheduleChoicePlace adapterScheduleChoicePlace) {
         super(fm);
         this.idx_local = idx_local ;

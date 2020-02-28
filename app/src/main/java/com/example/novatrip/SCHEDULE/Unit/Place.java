@@ -18,7 +18,6 @@ public class Place  implements Parcelable {
     private String img_url_place;// 이미지
     private String place_id;
 
-
     //PLACE_DETAIL table
     private int idx_place_detail;
     private String name_place_detail;

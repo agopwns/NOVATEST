@@ -15,6 +15,7 @@ public class ItemTravelDetail  implements Parcelable {
     public static int OlympicGameIDX = 1; // 올림픽 경기
     public static int PlaceIDX = 2; // 숙소 또는 여행지
     public static int AirlineIDX = 3; // 공항
+    public static int HotelIDX = 4; // 공항
 
     //TODO:여행 일정중 올림픽 제외한 장소 추가해야함.
     private OlympicGame olympicGame;
